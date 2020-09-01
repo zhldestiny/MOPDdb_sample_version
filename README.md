@@ -1,0 +1,3 @@
+# MOPDdb_sample_version
+环境：django2.2
+MOPDdb数据库，数据集使用homo_sapiens mus_musculus saccharomyces_cerevisiae escherichia_coli每个物种的100条蛋白
