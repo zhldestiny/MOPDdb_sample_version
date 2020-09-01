@@ -1,0 +1,4 @@
+Env-PPAS	3cdlB2	3cdlB	0	1	(1-46)(46-112)
+wdPPAS	1aa0A	1aa0A	0	1	(18-110)
+dPPAS2	1h3oA	1h3oA	0	1	(31-87)
+Env-PPAS	3kycA1	3kycA	0	1	(1-112)

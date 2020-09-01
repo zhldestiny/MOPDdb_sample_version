@@ -1,0 +1,3 @@
+Env-PPAS	1ihgA	1ihgA	0	1	(5-163)(193-331)
+Env-PPAS	1kt1A	1kt1A	0	1	(2-66)(67-182)(183-331)
+wPPAS	3hc1A	3hc1A	0	1	(1-330)

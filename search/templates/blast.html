@@ -1,0 +1,107 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} blast {% endblock %}
+{% block css %}
+{#    <link rel="stylesheet" href="{% static 'css/account.css' %}">#}
+    <style>
+        #content_mark{
+        padding-left: 5px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #CD853F;
+        }
+        #content_box{margin:20px auto; padding-left:10px;}
+        select{max-width:200px;}
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="blast" style="">
+{#    <h5 class="col-xs-offset-5">sequence search</h5>#}
+{#    <form id="submitSeq" method="POST" novalidate style="width:1140px;height:200px;">#}
+{#        <div class="col-xs-offset-4">#}
+{#        <input id="seqText" type="textarea" style="width:300px;height:100px;" \>#}
+{#        </div>#}
+{#        <div class="col-xs-offset-5" style="padding: 5px">#}
+{#        <input id="btnBlast" type="button" class="btn btn-default" value="Submit" \>#}
+{#        </div>#}
+{#    </form>#}
+    <div id="content_mark">
+		Blastp
+	</div>
+    <div id="content_box">
+        <p>
+            Blastp is used to search similar sequences against the database.
+            <span>
+{#                <a href="help.php#blast" title="help of the blast" target="_blank"><img src="images/question.png" alt="" ></a>#}
+            </span>
+        </p>
+    	<form action="do_blast" method="post" id="submitSeq" onSubmit="return validation()">
+            {% csrf_token %}
+            Paste the query sequence in FASTA format.
+            <input type="button" value="Example" id="example"><br><br>
+            <textarea rows="8" cols="60" name="seq" id="seq"></textarea>
+            <br><br>
+                <p>Select your parameters</p>
+                E-value:
+                <select class="form-control" name="evalue" id="evalue">
+                    <option value="0.00001">1e-5</option>
+                    <option value="0.01">0.01</option>
+                    <option value="0.1">0.1</option>
+                    <option value="1">1</option>
+                    <option value="10.0" selected="selected" >10</option>
+                    <option value="100.0">100</option>
+                    <option value="1000.0">1000</option>
+                </select><br>
+            <button class="btn btn-primary" id="btnBlast">Submit</button>
+		</form>
+    </div>
+    <div class=""myDiv></div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        var button = document.getElementById("example");
+        button.onclick = function(){
+            var seq = document.getElementById("seq");
+            seq.value = ">query\nCTGSKDCYAPCRK";
+        };
+        function validation(){
+            var input = document.getElementById("seq").value;
+            if (input==null || input==""){
+                alert("Sequence must be filled out");
+                return false;
+            }
+        }
+    {#// 页面框加载完成后自动执行函数#}
+    {#    $(function(){#}
+    {#        bindClickBtnBlast();#}
+    {#    });#}
+    {##}
+    {#    /*#}
+    {#    点击获取验证码的按钮绑定事件#}
+    {#     */#}
+    {#    function bindClickBtnBlast() {#}
+    {#        $('#btnBlast').click(function () {#}
+    {#            //获取序列#}
+    {#            var seq = $('#seq').val();#}
+    {#            var evalue = $('#evalue').val();#}
+    {#            //alert(seqText)#}
+    {#            //发送ajax请求,seq发送给后端#}
+    {#            $.ajax({#}
+    {#                url: "{% url 'do_blast' %}",    //反向生成或者直接"/send/sms/"#}
+    {#                type: "GET",#}
+    {#                data: {seq: seq, evalue: evalue},#}
+    {#                success:function (res) {#}
+    {#                    //console.log(res)#}
+    {#                    $("#myDiv").html(res);#}
+    {#                }#}
+    {#            })#}
+    {##}
+    {#        })#}
+    {##}
+    {#    }#}
+    </script>
+{% endblock %}

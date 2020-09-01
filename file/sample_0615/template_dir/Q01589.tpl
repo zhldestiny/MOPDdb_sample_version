@@ -1,0 +1,3 @@
+Env-PPAS	3fj1A1	3fj1A	0	1	(187-337)
+Env-PPAS	1zavA	1zavA	0	1	(168-302)(303-337)
+wPPAS	1mv3A	1mv3A	0	1	(328-337)

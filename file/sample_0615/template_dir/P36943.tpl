@@ -1,0 +1,5 @@
+wdPPAS	2k0lA	2k0lA	0	1	(96-293)
+wPPAS	2k0lA	2k0lA	0	1	(96-293)
+PPAS	2k0lA	2k0lA	0	1	(96-294)
+wdPPAS	3bs0A2	3bs0A	0	1	(38-294)
+wPPAS	2qomB	2qomB	0	1	(67-287)

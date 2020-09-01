@@ -1,0 +1,6 @@
+MUSTER	1o5kA	1o5kA	0	1	(5-301)
+dPPAS	3fluA	3fluA	0	1	(3-301)
+wdPPAS	3fluA	3fluA	0	1	(3-301)
+dPPAS2	3fluA	3fluA	0	1	(3-301)
+MUSTER	3fluA	3fluA	0	1	(1-301)
+dPPAS	1o5kA	1o5kA	0	1	(5-301)

@@ -1,0 +1,5 @@
+dPPAS2	1h2sB	1h2sB	0	1	(47-102)
+Env-PPAS	2gcgA1	2gcgA	0	1	(1-83)(84-112)
+Env-PPAS	3ga0A1	3ga0A	0	1	(1-83)(84-113)
+wdPPAS	1h2sB	1h2sB	0	1	(47-102)
+wMUSTER	1uusA1	1uusA	0	0	(1-104)

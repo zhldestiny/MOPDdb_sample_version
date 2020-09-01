@@ -1,0 +1,3 @@
+Env-PPAS	1b3qB1	1b3qB	0	1	(17-76)(77-292)
+Env-PPAS	1vb5B	1vb5B	0	1	(21-112)(113-294)
+Env-PPAS	1yixA	1yixA	0	1	(1-298)

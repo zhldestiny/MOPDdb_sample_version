@@ -1,0 +1,5 @@
+Env-PPAS	1w4iA	1w4iA	0	1	(1-41)
+MUSTER	1xipA	1xipA	0	1	(1-51)
+Env-PPAS	2h12B1	2h12B	0	1	(6-49)
+wdPPAS	2bicA	2bicA	0	1	(15-42)
+dPPAS	2bbgA	2bbgA	0	1	(2-43)

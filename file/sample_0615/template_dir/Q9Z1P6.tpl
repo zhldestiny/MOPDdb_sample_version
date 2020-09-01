@@ -1,0 +1,6 @@
+Env-PPAS	3jr1A1	3jr1A	0	1	(1-112)
+wdPPAS	2ju4A	2ju4A	0	1	(21-112)
+Env-PPAS	2dt4A	2dt4A	0	1	(1-112)
+PPAS	2ju4A	2ju4A	0	1	(21-112)
+dPPAS2	1xcqS	1xcqS	0	1	(72-112)
+dPPAS	2k7mA	2k7mA	0	1	(17-106)

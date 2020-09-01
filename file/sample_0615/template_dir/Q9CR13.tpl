@@ -1,0 +1,5 @@
+Env-PPAS	2jntA	2jntA	0	1	(1-103)
+wdPPAS	2jntA2	2jntA	0	1	(46-103)
+wdPPAS	2jntA	2jntA	0	1	(1-103)
+wPPAS	2a3vB1	2a3vB	0	1	(1-101)(102-109)
+Env-PPAS	1k19A	1k19A	0	1	(1-104)

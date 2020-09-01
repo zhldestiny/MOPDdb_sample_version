@@ -1,0 +1,6 @@
+wdPPAS	1qklA	1qklA	0	1	(1-110)
+wPPAS	1qklA	1qklA	0	1	(1-112)
+Env-PPAS	2dyiA2	2dyiA	0	1	(56-110)
+Env-PPAS	2qggA2	2qggA	0	1	(56-112)
+dPPAS2	2ju4A	2ju4A	0	1	(1-70)
+PPAS	1qklA	1qklA	0	1	(1-112)

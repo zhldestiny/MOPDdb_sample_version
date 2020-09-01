@@ -1,0 +1,8 @@
+wMUSTER	1qnqA	1qnqA	0	1	(1-295)
+wPPAS	1qnqA	1qnqA	0	1	(1-295)
+dPPAS2	1qnqA	1qnqA	0	1	(15-295)
+wdPPAS	1qnqA	1qnqA	0	1	(1-295)
+PPAS	1qnqA	1qnqA	0	1	(15-295)
+MUSTER	2cksB	2cksB	0	0	(1-295)
+dPPAS	1qnqA	1qnqA	0	1	(15-295)
+wMUSTER	2cksB	2cksB	0	1	(1-295)

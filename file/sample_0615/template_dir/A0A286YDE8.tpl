@@ -1,0 +1,5 @@
+Env-PPAS	1g1xB	1g1xB	0	1	(18-112)
+wdPPAS	2k7mA	2k7mA	0	1	(1-92)
+wPPAS	1kfuL3	1kfuL	0	1	(2-112)
+Env-PPAS	1ateA	1ateA	0	1	(40-107)
+dPPAS	2k7mA	2k7mA	0	1	(1-85)

@@ -1,0 +1,699 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} show {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+    a:link {
+        color: #000000;
+        text-decoration: underline;
+    }
+
+    a:visited {
+        color: #000000;
+    }
+
+    a:hover {
+        color: #336699;
+        text-decoration: none;
+    }
+    table {
+        border-collapse: collapse;
+        color: #000000;
+        font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="introContent"></div>
+    <h3>Table I: Structure prediction and structure-based function annotation of SARS-CoV-2 genome.
+</h3>
+<ul>
+<table border="2">
+<tr align="center">
+    <td>#</td>
+    <td>Protein sequence translated from
+        <a href="https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3" target=_blank>SARS-CoV-2 genome</a></td>
+    <td><a href="/C-I-TASSER" target=_blank>C-I-TASSER</a> structure model and estimated accuracy</td>
+    <td>Protein name and function (based on UniProt curation of
+    <a href="https://covid-19.uniprot.org/uniprotkb?query=*&facets=other_organism:SARS2" target=_blank>SARS-CoV-2 proteome</a>)</td>
+    <td>Solved experimental structure</td>
+</tr>
+<tr>
+    <td algn="center">1</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_1"
+        target="_blank">QHD43415_1</a>
+        (L=180)<br>
+MESLVPGFNEKTHVQLSLPVLQVRDVLVRGFGDSVEEVLS<br>
+EARQHLKDGTCGLVEVEKGVLPQLEQPYVFIKRSDARTAP<br>
+HGHVMVELVAELEGIQYGRSGETLGVLVPHVGEIPVAYRK<br>
+VLLRKNGNKGAGGHSYGADLKSFDLGDELGTDPYEDFQEN<br>
+WNTKHSSGVTRELMRELNGG
+    </td>
+    <td align="center">
+        <a href="QHD43415_1.png"><img src="{% static 'img/SARSCoV2/QHD43415_1.png' %}" width=200></a><br>
+        [<a href="QHD43415_1.pdb.gz" download>QHD43415_1.pdb</a>]<br>
+        Estimate TM-score=0.55
+    </td>
+    <td>Host translation inhibitor nsp1.<br>Inhibits host translation by interacting with the 40S ribosomal subunit. The nsp1-40S ribosome complex further induces an endonucleolytic cleavage near the 5'UTR of host mRNAs, targeting them for degradation. Viral mRNAs are not susceptible to nsp1-mediated endonucleolytic RNA cleavage thanks to the presence of a 5'-end leader sequence and are therefore protected from degradation. By suppressing host gene expression, nsp1 facilitates efficient viral gene expression in infected cells and evasion from host immune response.<br>
+        [<a href="COFACTOR/QHD43415_1">GO term predictions</a>]
+        [<a href="COACH/QHD43415_1">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">2</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_2"
+        target="_blank">QHD43415_2</a>
+        (L=638)<br>
+AYTRYVDNNFCGPDGYPLECIKDLLARAGKASCTLSEQLD<br>
+FIDTKRGVYCCREHEHEIAWYTERSEKSYELQTPFEIKLA<br>
+KKFDTFNGECPNFVFPLNSIIKTIQPRVEKKKLDGFMGRI<br>
+RSVYPVASPNECNQMCLSTLMKCDHCGETSWQTGDFVKAT<br>
+CEFCGTENLTKEGATTCGYLPQNAVVKIYCPACHNSEVGP<br>
+EHSLAEYHNESGLKTILRKGGRTIAFGGCVFSYVGCHNKC<br>
+AYWVPRASANIGCNHTGVVGEGSEGLNDNLLEILQKEKVN<br>
+INIVGDFKLNEEIAIILASFSASTSAFVETVKGLDYKAFK<br>
+QIVESCGNFKVTKGKAKKGAWNIGEQKSILSPLYAFASEA<br>
+ARVVRSIFSRTLETAQNSVRVLQKAAITILDGISQYSLRL<br>
+IDAMMFTSDLATNNLVVMAYITGGVVQLTSQWLTNIFGTV<br>
+YEKLKPVLDWLEEKFKEGVEFLRDGWEIVKFISTCACEIV<br>
+GGQIVTCAKEIKESVQTFFKLVNKFLALCADSIIIGGAKL<br>
+KALNLGETFVTHSKGLYRKCVKSREETGLLMPLKAPKEII<br>
+FLEGETLPTEVLTEEVVLKTGDLQPLEQPTSEAVEAPLVG<br>
+TPVCINGLMLLEIKDTEKYCALAPNMMVTNNTFTLKGG
+    </td>
+    <td align="center">
+        <a href="QHD43415_2.png"><img src="{% static 'img/SARSCoV2/QHD43415_2.png' %}" width=200></a><br>
+        [<a href="QHD43415_2.pdb.gz" download>QHD43415_2.pdb</a>]<br>
+        Estimate TM-score=0.40
+    </td>
+    <td>Non-structural protein 2 (nsp2).<br>May play a role in the modulation of host cell survival signaling pathway by interacting with host PHB and PHB2. Indeed, these two proteins play a role in maintaining the functional integrity of the mitochondria and protecting cells from various stresses.<br>
+        [<a href="COFACTOR/QHD43415_2">GO term predictions</a>]
+        [<a href="COACH/QHD43415_2">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">3</td>
+    <td>&gt;<a href="https://www.ncbi.nlm.nih.gov/protein/QHD43415/" target="_blank">QHD43415_3</a>
+        (L=1945)
+        <a href="{% url 'home' %}QHD43415_3_1" target="_blank">QHD43415_3_1</a>
+        <a href="{% url 'home' %}QHD43415_3_2" target="_blank">QHD43415_3_2</a><br>
+APTKVTFGDDTVIEVQGYKSVNITFELDERIDKVLNEKCS<br>
+AYTVELGTEVNEFACVVADAVIKTLQPVSELLTPLGIDLD<br>
+EWSMATYYLFDESGEFKLASHMYCSFYPPDEDEEEGDCEE<br>
+EEFEPSTQYEYGTEDDYQGKPLEFGATSAALQPEEEQEED<br>
+WLDDDSQQTVGQQDGSEDNQTTTIQTIVEVQPQLEMELTP<br>
+VVQTIEVNSFSGYLKLTDNVYIKNADIVEEAKKVKPTVVV<br>
+NAANVYLKHGGGVAGALNKATNNAMQVESDDYIATNGPLK<br>
+VGGSCVLSGHNLAKHCLHVVGPNVNKGEDIQLLKSAYENF<br>
+NQHEVLLAPLLSAGIFGADPIHSLRVCVDTVRTNVYLAVF<br>
+DKNLYDKLVSSFLEMKSEKQVEQKIAEIPKEEVKPFITES<br>
+KPSVEQRKQDDKKIKACVEEVTTTLEETKFLTENLLLYID<br>
+INGNLHPDSATLVSDIDITFLKKDAPYIVGDVVQEGVLTA<br>
+VVIPTKKAGGTTEMLAKALRKVPTDNYITTYPGQGLNGYT<br>
+VEEAKTVLKKCKSAFYILPSIISNEKQEILGTVSWNLREM<br>
+LAHAEETRKLMPVCVETKAIVSTIQRKYKGIKIQEGVVDY<br>
+GARFYFYTSKTTVASLINTLNDLNETLVTMPLGYVTHGLN<br>
+LEEAARYMRSLKVPATVSVSSPDAVTAYNGYLTSSSKTPE<br>
+EHFIETISLAGSYKDWSYSGQSTQLGIEFLKRGDKSVYYT<br>
+SNPTTFHLDGEVITFDNLKTLLSLREVRTIKVFTTVDNIN<br>
+LHTQVVDMSMTYGQQFGPTYLDGADVTKIKPHNSHEGKTF<br>
+YVLPNDDTLRVEAFEYYHTTDPSFLGRYMSALNHTKKWKY<br>
+PQVNGLTSIKWADNNCYLATALLTLQQIELKFNPPALQDA<br>
+YYRARAGEAANFCALILAYCNKTVGELGDVRETMSYLFQH<br>
+ANLDSCKRVLNVVCKTCGQQQTTLKGVEAVMYMGTLSYEQ<br>
+FKKGVQIPCTCGKQATKYLVQQESPFVMMSAPPAQYELKH<br>
+GTFTCASEYTGNYQCGHYKHITSKETLYCIDGALLTKSSE<br>
+YKGPITDVFYKENSYTTTIKPVTYKLDGVVCTEIDPKLDN<br>
+YYKKDNSYFTEQPIDLVPNQPYPNASFDNFKFVCDNIKFA<br>
+DDLNQLTGYKKPASRELKVTFFPDLNGDVVAIDYKHYTPS<br>
+FKKGAKLLHKPIVWHVNNATNKATYKPNTWCIRCLWSTKP<br>
+VETSNSFDVLKSEDAQGMDNLACEDLKPVSEEVVENPTIQ<br>
+KDVLECNVKTTEVVGDIILKPANNSLKITEEVGHTDLMAA<br>
+YVDNSSLTIKKPNELSRVLGLKTLATHGLAAVNSVPWDTI<br>
+ANYAKPFLNKVVSTTTNIVTRCLNRVCTNYMPYFFTLLLQ<br>
+LCTFTRSTNSRIKASMPTTIAKNTVKSVGKFCLEASFNYL<br>
+KSPNFSKLINIIIWFLLLSVCLGSLIYSTAALGVLMSNLG<br>
+MPSYCTGYREGYLNSTNVTIATYCTGSIPCSVCLSGLDSL<br>
+DTYPSLETIQITISSFKWDLTAFGLVAEWFLAYILFTRFF<br>
+YVLGLAAIMQLFFSYFAVHFISNSWLMWLIINLVQMAPIS<br>
+AMVRMYIFFASFYYVWKSYVHVVDGCNSSTCMMCYKRNRA<br>
+TRVECTTIVNGVRRSFYVYANGGKGFCKLHNWNCVNCDTF<br>
+CAGSTFISDEVARDLSLQFKRPINPTDQSSYIVDSVTVKN<br>
+GSIHLYFDKAGQKTYERHSLSHFVNLDNLRANNTKGSLPI<br>
+NVIVFDGKSKCEESSAKSASVYYSQLMCQPILLLDQALVS<br>
+DVGDSAEVAVKMFDAYVNTFSSTFNVPMEKLKTLVATAEA<br>
+ELAKNVSLDNVLSTFISAARQGFVDSDVETKDVVECLKLS<br>
+HQSDIEVTGDSCNNYMLTYNKVENMTPRDLGACIDCSARH<br>
+INAQVAKSHNIALIWNVKDFMSLSEQLRKQIRSAAKKNNL<br>
+PFKLTCATTRQVVNVVTTKIALKGG
+    </td>
+    <td align="center">
+        <a href="QHD43415_3.png"><img src="{% static 'img/SARSCoV2/QHD43415_3.png' %}" width=200></a><br>
+        [<a href="QHD43415_3.pdb.gz" download>QHD43415_3.pdb</a>]<br>
+        Estimate TM-score=0.58
+    </td>
+    <td>Papain-like proteinase.<br>Responsible for the cleavages located at the N-terminus of the replicase polyprotein. In addition, PL-PRO possesses a deubiquitinating/deISGylating activity and processes both 'Lys-48'- and 'Lys-63'-linked polyubiquitin chains from cellular substrates. Participates together with nsp4 in the assembly of virally-induced cytoplasmic double-membrane vesicles necessary for viral replication. Antagonizes innate immune induction of type I interferon by blocking the phosphorylation, dimerization and subsequent nuclear translocation of host IRF3. Prevents also host NF-kappa-B signaling.<br>
+        [<a href="COFACTOR/QHD43415_3">GO term predictions</a>]
+        [<a href="COACH/QHD43415_3">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6W6Y" target="_blank">6W6Y</a>(range:207-379);</br><a href="https://www.rcsb.org/structure/6W9C" target="_blank">6W9C</a>(range:748-1060);</br></td></tr><tr>
+    <td algn="center">4</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_4"
+        target="_blank">QHD43415_4</a>
+        (L=500)<br>
+KIVNNWLKQLIKVTLVFLFVAAIFYLITPVHVMSKHTDFS<br>
+SEIIGYKAIDGGVTRDIASTDTCFANKHADFDTWFSQRGG<br>
+SYTNDKACPLIAAVITREVGFVVPGLPGTILRTTNGDFLH<br>
+FLPRVFSAVGNICYTPSKLIEYTDFATSACVLAAECTIFK<br>
+DASGKPVPYCYDTNVLEGSVAYESLRPDTRYVLMDGSIIQ<br>
+FPNTYLEGSVRVVTTFDSEYCRHGTCERSEAGVCVSTSGR<br>
+WVLNNDYYRSLPGVFCGVDAVNLLTNMFTPLIQPIGALDI<br>
+SASIVAGGIVAIVVTCLAYYFMRFRRAFGEYSHVVAFNTL<br>
+LFLMSFTVLCLTPVYSFLPGVYSVIYLYLTFYLTNDVSFL<br>
+AHIQWMVMFTPLVPFWITIAYIICISTKHFYWFFSNYLKR<br>
+RVVFNGVSFSTFEEAALCTFLLNKEMYLKLRSDVLLPLTQ<br>
+YNRYLALYNKYKYFSGAMDTTSYREAACCHLAKALNDFSN<br>
+SGSDVLYQPPQTSITSAVLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_4.png"><img src="{% static 'img/SARSCoV2/QHD43415_4.png' %}" width=200></a><br>
+        [<a href="QHD43415_4.pdb.gz" download>QHD43415_4.pdb</a>]<br>
+        Estimate TM-score=0.53
+    </td>
+    <td>Non-structural protein 4 (nsp4).<br>Participates in the assembly of virally-induced cytoplasmic double-membrane vesicles necessary for viral replication.<br>
+        [<a href="COFACTOR/QHD43415_4">GO term predictions</a>]
+        [<a href="COACH/QHD43415_4">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">5</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_5"
+        target="_blank">QHD43415_5</a>
+        (L=306)<br>
+SGFRKMAFPSGKVEGCMVQVTCGTTTLNGLWLDDVVYCPR<br>
+HVICTSEDMLNPNYEDLLIRKSNHNFLVQAGNVQLRVIGH<br>
+SMQNCVLKLKVDTANPKTPKYKFVRIQPGQTFSVLACYNG<br>
+SPSGVYQCAMRPNFTIKGSFLNGSCGSVGFNIDYDCVSFC<br>
+YMHHMELPTGVHAGTDLEGNFYGPFVDRQTAQAAGTDTTI<br>
+TVNVLAWLYAAVINGDRWFLNRFTTTLNDFNLVAMKYNYE<br>
+PLTQDHVDILGPLSAQTGIAVLDMCASLKELLQNGMNGRT<br>
+ILGSALLEDEFTPFDVVRQCSGVTFQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_5.png"><img src="{% static 'img/SARSCoV2/QHD43415_5.png' %}" width=200></a><br>
+        [<a href="QHD43415_5.pdb.gz" download>QHD43415_5.pdb</a>]<br>
+        Estimate TM-score=0.96
+    </td>
+    <td>Proteinase 3CL-PRO.<br>Cleaves the C-terminus of replicase polyprotein at 11 sites. Recognizes substrates containing the core sequence [ILMVF]-Q-|-[SGACN]. Also able to bind an ADP-ribose-1''-phosphate (ADRP).<br>
+        [<a href="COFACTOR/QHD43415_5">GO term predictions</a>]
+        [<a href="COACH/QHD43415_5">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6LU7" target="_blank">6LU7</a>(range:1-306);</br></td></tr><tr>
+    <td algn="center">6</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_6"
+        target="_blank">QHD43415_6</a>
+        (L=290)<br>
+SAVKRTIKGTHHWLLLTILTSLLVLVQSTQWSLFFFLYEN<br>
+AFLPFAMGIIAMSAFAMMFVKHKHAFLCLFLLPSLATVAY<br>
+FNMVYMPASWVMRIMTWLDMVDTSLSGFKLKDCVMYASAV<br>
+VLLILMTARTVYDDGARRVWTLMNVLTLVYKVYYGNALDQ<br>
+AISMWALIISVTSNYSGVVTTVMFLARGIVFMCVEYCPIF<br>
+FITGNTLQCIMLVYCFLGYFCTCYFGLFCLLNRYFRLTLG<br>
+VYDYLVSTQEFRYMNSQGLLPPKNSIDAFKLNIKLLGVGG<br>
+KPCIKVATVQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_6.png"><img src="{% static 'img/SARSCoV2/QHD43415_6.png' %}" width=200></a><br>
+        [<a href="QHD43415_6.pdb.gz" download>QHD43415_6.pdb</a>]<br>
+        Estimate TM-score=0.37
+    </td>
+    <td>Non-structural protein 6 (nsp6).<br>Plays a role in the initial induction of autophagosomes from host reticulum endoplasmic. Later, limits the expansion of these phagosomes that are no longer able to deliver viral components to lysosomes.<br>
+        [<a href="COFACTOR/QHD43415_6">GO term predictions</a>]
+        [<a href="COACH/QHD43415_6">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">7</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_7"
+        target="_blank">QHD43415_7</a>
+        (L=83)<br>
+SKMSDVKCTSVVLLSVLQQLRVESSSKLWAQCVQLHNDIL<br>
+LAKDTTEAFEKMVSLLSVLLSMQGAVDINKLCEEMLDNRA<br>
+TLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_7.png"><img src="{% static 'img/SARSCoV2/QHD43415_7.png' %}" width=200></a><br>
+        [<a href="QHD43415_7.pdb.gz" download>QHD43415_7.pdb</a>]<br>
+        Estimate TM-score=0.63
+    </td>
+    <td>Non-structural protein 7 (nsp7).<br>Forms a hexadecamer with nsp8 (8 subunits of each) that may participate in viral replication by acting as a primase. Alternatively, may synthesize substantially longer products than oligonucleotide primers.<br>
+        [<a href="COFACTOR/QHD43415_7">GO term predictions</a>]
+        [<a href="COACH/QHD43415_7">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6M71" target="_blank">6M71</a>(range:1-83);</br></td></tr><tr>
+    <td algn="center">8</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_8"
+        target="_blank">QHD43415_8</a>
+        (L=198)<br>
+AIASEFSSLPSYAAFATAQEAYEQAVANGDSEVVLKKLKK<br>
+SLNVAKSEFDRDAAMQRKLEKMADQAMTQMYKQARSEDKR<br>
+AKVTSAMQTMLFTMLRKLDNDALNNIINNARDGCVPLNII<br>
+PLTTAAKLMVVIPDYNTYKNTCDGTTFTYASALWEIQQVV<br>
+DADSKIVQLSEISMDNSPNLAWPLIVTALRANSAVKLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_8.png"><img src="{% static 'img/SARSCoV2/QHD43415_8.png' %}" width=200></a><br>
+        [<a href="QHD43415_8.pdb.gz" download>QHD43415_8.pdb</a>]<br>
+        Estimate TM-score=0.88
+    </td>
+    <td>Non-structural protein 8 (nsp8).<br>Forms a hexadecamer with nsp7 (8 subunits of each) that may participate in viral replication by acting as a primase. Alternatively, may synthesize substantially longer products than oligonucleotide primers.<br>
+        [<a href="COFACTOR/QHD43415_8">GO term predictions</a>]
+        [<a href="COACH/QHD43415_8">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6M71" target="_blank">6M71</a>(range:84-132);</br></td></tr><tr>
+    <td algn="center">9</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_9"
+        target="_blank">QHD43415_9</a>
+        (L=113)<br>
+NNELSPVALRQMSCAAGTTQTACTDDNALAYYNTTKGGRF<br>
+VLALLSDLQDLKWARFPKSDGTGTIYTELEPPCRFVTDTP<br>
+KGPKVKYLYFIKGLNNLNRGMVLGSLAATVRLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_9.png"><img src="{% static 'img/SARSCoV2/QHD43415_9.png' %}" width=200></a><br>
+        [<a href="QHD43415_9.pdb.gz" download>QHD43415_9.pdb</a>]<br>
+        Estimate TM-score=0.93
+    </td>
+    <td>Non-structural protein 9 (nsp9).<br>May participate in viral replication by acting as a ssRNA-binding protein.<br>
+        [<a href="COFACTOR/QHD43415_9">GO term predictions</a>]
+        [<a href="COACH/QHD43415_9">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6W4B" target="_blank">6W4B</a>(range:1-113);</br></td></tr><tr>
+    <td algn="center">10</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_10"
+        target="_blank">QHD43415_10</a>
+        (L=139)<br>
+AGNATEVPANSTVLSFCAFAVDAAKAYKDYLASGGQPITN<br>
+CVKMLCTHTGTGQAITVTPEANMDQESFGGASCCLYCRCH<br>
+IDHPNPKGFCDLKGKYVQIPTTCANDPVGFTLKNTVCTVC<br>
+GMWKGYGCSCDQLREPMLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_10.png"><img src="{% static 'img/SARSCoV2/QHD43415_10.png' %}" width=200></a><br>
+        [<a href="QHD43415_10.pdb.gz" download>QHD43415_10.pdb</a>]<br>
+        Estimate TM-score=0.90
+    </td>
+    <td>Non-structural protein 10 (nsp10).<br>Plays a pivotal role in viral transcription by stimulating both nsp14 3'-5' exoribonuclease and nsp16 2'-O-methyltransferase activities. Therefore plays an essential role in viral mRNAs cap methylation.<br>
+        [<a href="COFACTOR/QHD43415_10">GO term predictions</a>]
+        [<a href="COACH/QHD43415_10">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6W75" target="_blank">6W75</a>(range:1-139);</br></td></tr><tr>
+    <td algn="center">11</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_11"
+        target="_blank">QHD43415_11</a>
+        (L=932)<br>
+SADAQSFLNRVCGVSAARLTPCGTGTSTDVVYRAFDIYND<br>
+KVAGFAKFLKTNCCRFQEKDEDDNLIDSYFVVKRHTFSNY<br>
+QHEETIYNLLKDCPAVAKHDFFKFRIDGDMVPHISRQRLT<br>
+KYTMADLVYALRHFDEGNCDTLKEILVTYNCCDDDYFNKK<br>
+DWYDFVENPDILRVYANLGERVRQALLKTVQFCDAMRNAG<br>
+IVGVLTLDNQDLNGNWYDFGDFIQTTPGSGVPVVDSYYSL<br>
+LMPILTLTRALTAESHVDTDLTKPYIKWDLLKYDFTEERL<br>
+KLFDRYFKYWDQTYHPNCVNCLDDRCILHCANFNVLFSTV<br>
+FPPTSFGPLVRKIFVDGVPFVVSTGYHFRELGVVHNQDVN<br>
+LHSSRLSFKELLVYAADPAMHAASGNLLLDKRTTCFSVAA<br>
+LTNNVAFQTVKPGNFNKDFYDFAVSKGFFKEGSSVELKHF<br>
+FFAQDGNAAISDYDYYRYNLPTMCDIRQLLFVVEVVDKYF<br>
+DCYDGGCINANQVIVNNLDKSAGFPFNKWGKARLYYDSMS<br>
+YEDQDALFAYTKRNVIPTITQMNLKYAISAKNRARTVAGV<br>
+SICSTMTNRQFHQKLLKSIAATRGATVVIGTSKFYGGWHN<br>
+MLKTVYSDVENPHLMGWDYPKCDRAMPNMLRIMASLVLAR<br>
+KHTTCCSLSHRFYRLANECAQVLSEMVMCGGSLYVKPGGT<br>
+SSGDATTAYANSVFNICQAVTANVNALLSTDGNKIADKYV<br>
+RNLQHRLYECLYRNRDVDTDFVNEFYAYLRKHFSMMILSD<br>
+DAVVCFNSTYASQGLVASIKNFKSVLYYQNNVFMSEAKCW<br>
+TETDLTKGPHEFCSQHTMLVKQGDDYVYLPYPDPSRILGA<br>
+GCFVDDIVKTDGTLMIERFVSLAIDAYPLTKHPNQEYADV<br>
+FHLYLQYIRKLHDELTGHMLDMYSVMLTNDNTSRYWEPEF<br>
+YEAMYTPHTVLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_11.png"><img src="{% static 'img/SARSCoV2/QHD43415_11.png' %}" width=200></a><br>
+        [<a href="QHD43415_11.pdb.gz" download>QHD43415_11.pdb</a>]<br>
+        Estimate TM-score=0.80
+    </td>
+    <td>RNA-directed RNA polymerase (RdRp).<br>Responsible for replication and transcription of the viral RNA genome.<br>
+        [<a href="COFACTOR/QHD43415_11">GO term predictions</a>]
+        [<a href="COACH/QHD43415_11">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6M71" target="_blank">6M71</a>(range:1-932);</br></td></tr><tr>
+    <td algn="center">12</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_12"
+        target="_blank">QHD43415_12</a>
+        (L=601)<br>
+AVGACVLCNSQTSLRCGACIRRPFLCCKCCYDHVISTSHK<br>
+LVLSVNPYVCNAPGCDVTDVTQLYLGGMSYYCKSHKPPIS<br>
+FPLCANGQVFGLYKNTCVGSDNVTDFNAIATCDWTNAGDY<br>
+ILANTCTERLKLFAAETLKATEETFKLSYGIATVREVLSD<br>
+RELHLSWEVGKPRPPLNRNYVFTGYRVTKNSKVQIGEYTF<br>
+EKGDYGDAVVYRGTTTYKLNVGDYFVLTSHTVMPLSAPTL<br>
+VPQEHYVRITGLYPTLNISDEFSSNVANYQKVGMQKYSTL<br>
+QGPPGTGKSHFAIGLALYYPSARIVYTACSHAAVDALCEK<br>
+ALKYLPIDKCSRIIPARARVECFDKFKVNSTLEQYVFCTV<br>
+NALPETTADIVVFDEISMATNYDLSVVNARLRAKHYVYIG<br>
+DPAQLPAPRTLLTKGTLEPEYFNSVCRLMKTIGPDMFLGT<br>
+CRRCPAEIVDTVSALVYDNKLKAHKDKSAQCFKMFYKGVI<br>
+THDVSSAINRPQIGVVREFLTRNPAWRKAVFISPYNSQNA<br>
+VASKILGLPTQTVDSSQGSEYDYVIFTQTTETAHSCNVNR<br>
+FNVAITRAKVGILCIMSDRDLYDKLQFTSLEIPRRNVATL<br>
+Q
+    </td>
+    <td align="center">
+        <a href="QHD43415_12.png"><img src="{% static 'img/SARSCoV2/QHD43415_12.png' %}" width=200></a><br>
+        [<a href="QHD43415_12.pdb.gz" download>QHD43415_12.pdb</a>]<br>
+        Estimate TM-score=0.99
+    </td>
+    <td>Helicase (Hel).<br>Multi-functional protein with a zinc-binding domain in N-terminus displaying RNA and DNA duplex-unwinding activities with 5' to 3' polarity. Activity of helicase is dependent on magnesium.<br>
+        [<a href="COFACTOR/QHD43415_12">GO term predictions</a>]
+        [<a href="COACH/QHD43415_12">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">13</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_13"
+        target="_blank">QHD43415_13</a>
+        (L=527)<br>
+AENVTGLFKDCSKVITGLHPTQAPTHLSVDTKFKTEGLCV<br>
+DIPGIPKDMTYRRLISMMGFKMNYQVNGYPNMFITREEAI<br>
+RHVRAWIGFDVEGCHATREAVGTNLPLQLGFSTGVNLVAV<br>
+PTGYVDTPNNTDFSRVSAKPPPGDQFKHLIPLMYKGLPWN<br>
+VVRIKIVQMLSDTLKNLSDRVVFVLWAHGFELTSMKYFVK<br>
+IGPERTCCLCDRRATCFSTASDTYACWHHSIGFDYVYNPF<br>
+MIDVQQWGFTGNLQSNHDLYCQVHGNAHVASCDAIMTRCL<br>
+AVHECFVKRVDWTIEYPIIGDELKINAACRKVQHMVVKAA<br>
+LLADKFPVLHDIGNPKAIKCVPQADVEWKFYDAQPCSDKA<br>
+YKIEELFYSYATHSDKFTDGVCLFWNCNVDRYPANSIVCR<br>
+FDTRVLSNLNLPGCDGGSLYVNKHAFHTPAFDKSAFVNLK<br>
+QLPFFYYSDSPCESHGKQVVSDIDYVPLKSATCITRCNLG<br>
+GAVCRHHANEYRLYLDAYNMMISAGFSLWVYKQFDTYNLW<br>
+NTFTRLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_13.png"><img src="{% static 'img/SARSCoV2/QHD43415_13.png' %}" width=200></a><br>
+        [<a href="QHD43415_13.pdb.gz" download>QHD43415_13.pdb</a>]<br>
+        Estimate TM-score=0.99
+    </td>
+    <td>Proofreading exoribonuclease / Guanine-N7 methyltransferase (ExoN).<br>Enzyme possessing two different activities: an exoribonuclease activity acting on both ssRNA and dsRNA in a 3' to 5' direction and a N7-guanine methyltransferase activity. Acts as a proofreading exoribonuclease for RNA replication, thereby lowering the sensitivity of the virus to RNA mutagens.<br>
+        [<a href="COFACTOR/QHD43415_13">GO term predictions</a>]
+        [<a href="COACH/QHD43415_13">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">14</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_14"
+        target="_blank">QHD43415_14</a>
+        (L=346)<br>
+SLENVAFNVVNKGHFDGQQGEVPVSIINNTVYTKVDGVDV<br>
+ELFENKTTLPVNVAFELWAKRNIKPVPEVKILNNLGVDIA<br>
+ANTVIWDYKRDAPAHISTIGVCSMTDIAKKPTETICAPLT<br>
+VFFDGRVDGQVDLFRNARNGVLITEGSVKGLQPSVGPKQA<br>
+SLNGVTLIGEAVKTQFNYYKKVDGVVQQLPETYFTQSRNL<br>
+QEFKPRSQMEIDFLELAMDEFIERYKLEGYAFEHIVYGDF<br>
+SHSQLGGLHLLIGLAKRFKESPFELEDFIPMDSTVKNYFI<br>
+TDAQTGSSKCVCSVIDLLLDDFVEIIKSQDLSVVSKVVKV<br>
+TIDYTEISFMLWCKDGHVETFYPKLQ
+    </td>
+    <td align="center">
+        <a href="QHD43415_14.png"><img src="{% static 'img/SARSCoV2/QHD43415_14.png' %}" width=200></a><br>
+        [<a href="QHD43415_14.pdb.gz" download>QHD43415_14.pdb</a>]<br>
+        Estimate TM-score=0.99
+    </td>
+    <td>Uridylate-specific endoribonuclease (NendoU).<br>Mn(2+)-dependent, uridylate-specific enzyme, which leaves 2'-3'-cyclic phosphates 5' to the cleaved bond.<br>
+        [<a href="COFACTOR/QHD43415_14">GO term predictions</a>]
+        [<a href="COACH/QHD43415_14">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6VWW" target="_blank">6VWW</a>(range:1-346);</br></td></tr><tr>
+    <td algn="center">15</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43415_15"
+        target="_blank">QHD43415_15</a>
+        (L=298)<br>
+SSQAWQPGVAMPNLYKMQRMLLEKCDLQNYGDSATLPKGI<br>
+MMNVAKYTQLCQYLNTLTLAVPYNMRVIHFGAGSDKGVAP<br>
+GTAVLRQWLPTGTLLVDSDLNDFVSDADSTLIGDCATVHT<br>
+ANKWDLIISDMYDPKTKNVTKENDSKEGFFTYICGFIQQK<br>
+LALGGSVAIKITEHSWNADLYKLMGHFAWWTAFVTNVNAS<br>
+SSEAFLIGCNYLGKPREQIDGYVMHANYIFWRNTNPIQLS<br>
+SYSLFDMSKFPLKLRGTAVMSLKEGQINDMILSLLSKGRL<br>
+IIRENNRVVISSDVLVNN
+    </td>
+    <td align="center">
+        <a href="QHD43415_15.png"><img src="{% static 'img/SARSCoV2/QHD43415_15.png' %}" width=200></a><br>
+        [<a href="QHD43415_15.pdb.gz" download>QHD43415_15.pdb</a>]<br>
+        Estimate TM-score=0.99
+    </td>
+    <td>2'-O-methyltransferase (2'-O-MT).<br>Methyltransferase that mediates mRNA cap 2'-O-ribose methylation to the 5'-cap structure of viral mRNAs. N7-methyl guanosine cap is a prerequisite for binding of nsp16. Therefore plays an essential role in viral mRNAs cap methylation which is essential to evade immune system.<br>
+        [<a href="COFACTOR/QHD43415_15">GO term predictions</a>]
+        [<a href="COACH/QHD43415_15">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6W75" target="_blank">6W75</a>(range:1-298);</br></td></tr><tr>
+    <td algn="center">16</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43416"
+        target="_blank">QHD43416</a>
+        (L=1273)<br>
+MFVFLVLLPLVSSQCVNLTTRTQLPPAYTNSFTRGVYYPD<br>
+KVFRSSVLHSTQDLFLPFFSNVTWFHAIHVSGTNGTKRFD<br>
+NPVLPFNDGVYFASTEKSNIIRGWIFGTTLDSKTQSLLIV<br>
+NNATNVVIKVCEFQFCNDPFLGVYYHKNNKSWMESEFRVY<br>
+SSANNCTFEYVSQPFLMDLEGKQGNFKNLREFVFKNIDGY<br>
+FKIYSKHTPINLVRDLPQGFSALEPLVDLPIGINITRFQT<br>
+LLALHRSYLTPGDSSSGWTAGAAAYYVGYLQPRTFLLKYN<br>
+ENGTITDAVDCALDPLSETKCTLKSFTVEKGIYQTSNFRV<br>
+QPTESIVRFPNITNLCPFGEVFNATRFASVYAWNRKRISN<br>
+CVADYSVLYNSASFSTFKCYGVSPTKLNDLCFTNVYADSF<br>
+VIRGDEVRQIAPGQTGKIADYNYKLPDDFTGCVIAWNSNN<br>
+LDSKVGGNYNYLYRLFRKSNLKPFERDISTEIYQAGSTPC<br>
+NGVEGFNCYFPLQSYGFQPTNGVGYQPYRVVVLSFELLHA<br>
+PATVCGPKKSTNLVKNKCVNFNFNGLTGTGVLTESNKKFL<br>
+PFQQFGRDIADTTDAVRDPQTLEILDITPCSFGGVSVITP<br>
+GTNTSNQVAVLYQDVNCTEVPVAIHADQLTPTWRVYSTGS<br>
+NVFQTRAGCLIGAEHVNNSYECDIPIGAGICASYQTQTNS<br>
+PRRARSVASQSIIAYTMSLGAENSVAYSNNSIAIPTNFTI<br>
+SVTTEILPVSMTKTSVDCTMYICGDSTECSNLLLQYGSFC<br>
+TQLNRALTGIAVEQDKNTQEVFAQVKQIYKTPPIKDFGGF<br>
+NFSQILPDPSKPSKRSFIEDLLFNKVTLADAGFIKQYGDC<br>
+LGDIAARDLICAQKFNGLTVLPPLLTDEMIAQYTSALLAG<br>
+TITSGWTFGAGAALQIPFAMQMAYRFNGIGVTQNVLYENQ<br>
+KLIANQFNSAIGKIQDSLSSTASALGKLQDVVNQNAQALN<br>
+TLVKQLSSNFGAISSVLNDILSRLDKVEAEVQIDRLITGR<br>
+LQSLQTYVTQQLIRAAEIRASANLAATKMSECVLGQSKRV<br>
+DFCGKGYHLMSFPQSAPHGVVFLHVTYVPAQEKNFTTAPA<br>
+ICHDGKAHFPREGVFVSNGTHWFVTQRNFYEPQIITTDNT<br>
+FVSGNCDVVIGIVNNTVYDPLQPELDSFKEELDKYFKNHT<br>
+SPDVDLGDISGINASVVNIQKEIDRLNEVAKNLNESLIDL<br>
+QELGKYEQYIKWPWYIWLGFIAGLIAIVMVTIMLCCMTSC<br>
+CSCLKGCCSCGSCCKFDEDDSEPVLKGVKLHYT
+    </td>
+    <td align="center">
+        <a href="QHD43416.png"><img src="{% static 'img/SARSCoV2/QHD43416.png' %}" width=200></a><br>
+        [<a href="QHD43416.pdb.gz" download>QHD43416.pdb</a>]<br>
+        Estimate TM-score=0.84
+    </td>
+    <td>Spike glycoprotein (S).<br><li>Spike protein S1 (residue 13-685): attaches the virion to the cell membrane by interacting with host receptor, initiating the infection. Binding to human ACE2 receptor and internalization of the virus into the endosomes of the host cell induces conformational changes in the Spike glycoprotein (<a href=https://www.ncbi.nlm.nih.gov/pubmed/32142651>PubMed:32142651<a>, <a href=https://www.ncbi.nlm.nih.gov/pubmed/32075877>PubMed:32075877</a>, <a href=https://www.ncbi.nlm.nih.gov/pubmed/32155444>PubMed:32155444</a>). Uses also human TMPRSS2 for priming in human lung cells which is an essential step for viral entry (<a href=https://www.ncbi.nlm.nih.gov/pubmed/32142651>PubMed:32142651</a>). Proteolysis by cathepsin CTSL may unmask the fusion peptide of S2 and activate membranes fusion within endosomes</li>
+<li>Spike protein S2 (residue 686-1273): mediates fusion of the virion and cellular membranes by acting as a class I viral fusion protein. Under the current model, the protein has at least three conformational states: pre-fusion native state, pre-hairpin intermediate state, and post-fusion hairpin state. During viral and target cell membrane fusion, the coiled coil regions (heptad repeats) assume a trimer-of-hairpins structure, positioning the fusion peptide in close proximity to the C-terminal region of the ectodomain. The formation of this structure appears to drive apposition and subsequent fusion of viral and target cell membranes.</li>
+<li>Spike protein S2' (residue 816-1273): acts as a viral fusion peptide which is unmasked following S2 cleavage occurring upon virus endocytosis.</li><br>
+        [<a href="COFACTOR/QHD43416">GO term predictions</a>]
+        [<a href="COACH/QHD43416">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6VYB" target="_blank">6VYB (open state)</a>(range:1-1273);</br><a href="https://www.rcsb.org/structure/6VXX" target="_blank">6VXX (closed state)</a>(range:1-1273);</br><a href="https://www.rcsb.org/structure/6LXT" target="_blank">6LXT</a>(range:912-988,1164-1202);</br></td></tr><tr>
+    <td algn="center">17</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43417"
+        target="_blank">QHD43417</a>
+        (L=275)<br>
+MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQAS<br>
+LPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFV<br>
+CNLLLLFVTVYSHLLLVAAGLEAPFLYLYALVYFLQSINF<br>
+VRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPY<br>
+NSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDC<br>
+VVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEP<br>
+EEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL
+    </td>
+    <td align="center">
+        <a href="QHD43417.png"><img src="{% static 'img/SARSCoV2/QHD43417.png' %}" width=200></a><br>
+        [<a href="QHD43417.pdb.gz" download>QHD43417.pdb</a>]<br>
+        Estimate TM-score=0.28
+    </td>
+    <td>ORF3a.<br>Forms homotetrameric potassium sensitive ion channels (viroporin) and may modulate virus release. Up-regulates expression of fibrinogen subunits FGA, FGB and FGG in host lung epithelial cells. Induces apoptosis in cell culture. Downregulates the type 1 interferon receptor by inducing serine phosphorylation within the IFN alpha-receptor subunit 1 (IFNAR1) degradation motif and increasing IFNAR1 ubiquitination<br>
+        [<a href="COFACTOR/QHD43417">GO term predictions</a>]
+        [<a href="COACH/QHD43417">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">18</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43418"
+        target="_blank">QHD43418</a>
+        (L=75)<br>
+MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLC<br>
+AYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV
+    </td>
+    <td align="center">
+        <a href="QHD43418.png"><img src="{% static 'img/SARSCoV2/QHD43418.png' %}" width=200></a><br>
+        [<a href="QHD43418.pdb.gz" download>QHD43418.pdb</a>]<br>
+        Estimate TM-score=0.60
+    </td>
+    <td>E.<br>Plays a central role in virus morphogenesis and assembly. Acts as a viroporin and self-assembles in host membranes forming pentameric protein-lipid pores that allow ion transport. Also plays a role in the induction of apoptosis. Activates the host NLRP3 inflammasome, leading to IL-1beta overproduction.<br>
+        [<a href="COFACTOR/QHD43418">GO term predictions</a>]
+        [<a href="COACH/QHD43418">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">19</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43419"
+        target="_blank">QHD43419</a>
+        (L=222)<br>
+MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYA<br>
+NRNRFLYIIKLIFLWLLWPVTLACFVLAAVYRINWITGGI<br>
+AIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILL<br>
+NVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCD<br>
+IKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYR<br>
+IGNYKLNTDHSSSSDNIALLVQ
+    </td>
+    <td align="center">
+        <a href="QHD43419.png"><img src="{% static 'img/SARSCoV2/QHD43419.png' %}" width=200></a><br>
+        [<a href="QHD43419.pdb.gz" download>QHD43419.pdb</a>]<br>
+        Estimate TM-score=0.37
+    </td>
+    <td>M.<br>Component of the viral envelope that plays a central role in virus morphogenesis and assembly via its interactions with other viral proteins.<br>
+        [<a href="COFACTOR/QHD43419">GO term predictions</a>]
+        [<a href="COACH/QHD43419">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">20</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43420"
+        target="_blank">QHD43420</a>
+        (L=61)<br>
+MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNL<br>
+SKSLTENKYSQLDEEQPMEID
+    </td>
+    <td align="center">
+        <a href="QHD43420.png"><img src="{% static 'img/SARSCoV2/QHD43420.png' %}" width=200></a><br>
+        [<a href="QHD43420.pdb.gz" download>QHD43420.pdb</a>]<br>
+        Estimate TM-score=0.54
+    </td>
+    <td>ORF6.<br>Disrupts cell nuclear import complex formation by tethering karyopherin alpha 2 and karyopherin beta 1 to the membrane. Retention of import factors at the ER/Golgi membrane leads to a loss of transport into the nucleus. Thereby prevents STAT1 nuclear translocation in response to interferon signaling, thus blocking the expression of interferon stimulated genes (ISGs) that display multiple antiviral activities.<br>
+        [<a href="COFACTOR/QHD43420">GO term predictions</a>]
+        [<a href="COACH/QHD43420">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">21</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43421"
+        target="_blank">QHD43421</a>
+        (L=121)<br>
+MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTY<br>
+EGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRAR<br>
+SVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLKRKT<br>
+E
+    </td>
+    <td align="center">
+        <a href="QHD43421.png"><img src="{% static 'img/SARSCoV2/QHD43421.png' %}" width=200></a><br>
+        [<a href="QHD43421.pdb.gz" download>QHD43421.pdb</a>]<br>
+        Estimate TM-score=0.72
+    </td>
+    <td>ORF7a.<br>Non-structural protein which is dispensable for virus replication in cell culture.<br>
+        [<a href="COFACTOR/QHD43421">GO term predictions</a>]
+        [<a href="COACH/QHD43421">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">22</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43422"
+        target="_blank">QHD43422</a>
+        (L=121)<br>
+MKFLVFLGIITTVAAFHQECSLQSCTQHQPYVVDDPCPIH<br>
+FYSKWYIRVGARKSAPLIELCVDEAGSKSPIQYIDIGNYT<br>
+VSCLPFTINCQEPKLGSLVVRCSFYEDFLEYHDVRVVLDF<br>
+I
+    </td>
+    <td align="center">
+        <a href="QHD43422.png"><img src="{% static 'img/SARSCoV2/QHD43422.png' %}" width=200></a><br>
+        [<a href="QHD43422.pdb.gz" download>QHD43422.pdb</a>]<br>
+        Estimate TM-score=0.45
+    </td>
+    <td>ORF8.<br>May play a role in host-virus interaction. Similar to some Bat coronavirus ns8 genes, but is entirely different from SARS ns8a or ns8b.<br>
+        [<a href="COFACTOR/QHD43422">GO term predictions</a>]
+        [<a href="COACH/QHD43422">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr><tr>
+    <td algn="center">23</td>
+    <td>&gt;<a href="{% url 'home' %}QHD43423"
+        target="_blank">QHD43423</a>
+        (L=419)<br>
+MSDNGPQNQRNAPRITFGGPSDSTGSNQNGERSGARSKQR<br>
+RPQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINTNSSP<br>
+DDQIGYYRRATRRIRGGDGKMKDLSPRWYFYYLGTGPEAG<br>
+LPYGANKDGIIWVATEGALNTPKDHIGTRNPANNAAIVLQ<br>
+LPQGTTLPKGFYAEGSRGGSQASSRSSSRSRNSSRNSTPG<br>
+SSRGTSPARMAGNGGDAALALLLLDRLNQLESKMSGKGQQ<br>
+QQGQTVTKKSAAEASKKPRQKRTATKAYNVTQAFGRRGPE<br>
+QTQGNFGDQELIRQGTDYKHWPQIAQFAPSASAFFGMSRI<br>
+GMEVTPSGTWLTYTGAIKLDDKDPNFKDQVILLNKHIDAY<br>
+KTFPPTEPKKDKKKKADETQALPQRQKKQQTVTLLPAADL<br>
+DDFSKQLQQSMSSADSTQA
+    </td>
+    <td align="center">
+        <a href="QHD43423.png"><img src="{% static 'img/SARSCoV2/QHD43423.png' %}" width=200></a><br>
+        [<a href="QHD43423.pdb.gz" download>QHD43423.pdb</a>]<br>
+        Estimate TM-score=0.67
+    </td>
+    <td>N.<br>Packages the positive strand viral genome RNA into a helical ribonucleocapsid (RNP) and plays a fundamental role during virion assembly through its interactions with the viral genome and membrane protein M. Plays an important role in enhancing the efficiency of subgenomic viral RNA transcription as well as viral replication.<br>
+        [<a href="COFACTOR/QHD43423">GO term predictions</a>]
+        [<a href="COACH/QHD43423">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/6M3M" target="_blank">6M3M</a>(range:50-174);</br></td></tr><tr>
+    <td algn="center">24</td>
+    <td>&gt;<a href="{% url 'home' %}QHI42199"
+        target="_blank">QHI42199</a>
+        (L=38)<br>
+MGYINVFAFPFTIYSLLLCRMNSRNYIAQVDVVNFNLT
+    </td>
+    <td align="center">
+        <a href="QHI42199.png"><img src="{% static 'img/SARSCoV2/QHI42199.png' %}" width=200></a><br>
+        [<a href="QHI42199.pdb.gz" download>QHI42199.pdb</a>]<br>
+        Estimate TM-score=0.49
+    </td>
+    <td>ORF10.<br>Dubious/uncertain protein. It is currently unclear whether this region translates into a functional protein. The respective region in related beta-coronaviruses, such as SARS-CoV, does not correspond to translated peptide.<br>
+        [<a href="COFACTOR/QHI42199">GO term predictions</a>]
+        [<a href="COACH/QHI42199">Ligand binding site predictions</a>]
+    </td>
+    <td width=250>
+<a href="https://www.rcsb.org/structure/NA" target="_blank">NA</a>(range:NA);</br></td></tr></table>
+</ul>
+    <div id="reference" style="float: right">
+        <a href="https://zhanglab.ccmb.med.umich.edu/COVID-19/" target="_blank">ref:zhanglab</a>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+    </script>
+{% endblock %}

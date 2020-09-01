@@ -1,0 +1,74 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} show {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+        #content_mark{
+        padding-left: 5px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #CD853F;
+        }
+        #content_box{
+            margin:20px auto;
+            padding-left:10px;
+        }
+        #browse_table{word-break:break-all; word-wrap: break-word; font-size:14px; margin:10px auto;}
+        a{text-decoration:none; color:#06f;}
+        a:hover{text-decoration:none; color:#f60;}
+        div.seq{text-overflow:ellipsis; overflow:hidden; width:220px; white-space:nowrap;}
+        div.seq:hover{text-overflow:inherit; overflow:visible; white-space:inherit;}
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div id="content_mark">
+Browse
+</div>
+<div id="content_box">
+<div style="float: left">Total number of results for <span style="color: red">{{ organism }}</span> are <span style="color: red">{{ num }}</span></div>
+    <table id='browse_table' class='display' border="0" cellspacing='0' width='100%'>
+        <thead><tr><th>Unp_ID</th><th>Organism</th><th>Description</th><th>Length</th><th>Domain</th><th>Sequence</th></tr></thead>
+        <tbody>
+        {% for i in organism_ls %}
+        <tr><td><a href="{% url 'home' %}{{ i.unp_id }}" class='id'>{{ i.unp_id }}</a></td>
+            <td>{{i.organism}}</td>
+            <td>None</td>
+            <td>{{ i.length }}</td>
+            <td>{{ i.domain }}</td>
+            <td><div class='seq'>{{ i.seq }}</div></td>
+        </tr>
+{#        <tr><td><a href='show_detail.php?id=BP1049' class='id'>BP1049</a></td><td>Antimicrobial</td><td>Acremonium tubakii</td><td>CEPHAIBOL B</td><td>17</td><td><div class='seq'>XFAAAVGLVAPQVPAPF</div></td></tr>#}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+    $(document).ready(function() {
+    $('#browse_table').DataTable({
+            "searching" : false,
+            "autoWidth" : false,
+            "columnDefs": [{
+                "targets":0,
+                "width":"10%"},{
+                "targets":1,
+                "width":"10%"},{
+                "targets":2,
+                "width":"8%"},{
+                "targets":3,
+                "width":"8%"},{
+                "targets":4,
+                "width":"20%"},{
+                "targets":5,
+                "width":"30%"}]
+    });
+    });
+    </script>
+{% endblock %}

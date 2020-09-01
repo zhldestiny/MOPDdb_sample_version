@@ -1,0 +1,8 @@
+MUSTER	1oyzA	1oyzA	0	1	(1-309)
+dPPAS	1oyzA	1oyzA	0	1	(42-309)
+wdPPAS	1oyzA	1oyzA	0	1	(1-309)
+wMUSTER	1oyzA	1oyzA	0	1	(1-308)
+wPPAS	1oyzA	1oyzA	0	1	(1-309)
+dPPAS2	1oyzA	1oyzA	0	1	(42-309)
+PPAS	1oyzA	1oyzA	0	1	(1-309)
+Env-PPAS	1oyzA	1oyzA	0	1	(1-309)

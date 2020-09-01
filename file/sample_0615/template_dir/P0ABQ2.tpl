@@ -1,0 +1,8 @@
+MUSTER	3ckyA	3ckyA	0	1	(1-161)(162-293)
+dPPAS	3ckyA	3ckyA	0	1	(1-162)(163-293)
+wdPPAS	3ckyA	3ckyA	0	1	(1-162)(163-293)
+wMUSTER	3ckyA	3ckyA	0	1	(1-161)(162-293)
+wPPAS	3ckyA	3ckyA	0	1	(1-162)(163-293)
+dPPAS2	3ckyA	3ckyA	0	1	(1-162)(163-293)
+PPAS	3ckyA	3ckyA	0	1	(1-162)(163-293)
+Env-PPAS	3ckyA	3ckyA	0	1	(1-162)(163-293)

@@ -1,0 +1,8 @@
+wdPPAS	1o5kA	1o5kA	0	1	(2-298)
+MUSTER	1o5kA	1o5kA	0	1	(1-298)
+dPPAS	1o5kA	1o5kA	0	1	(2-298)
+wdPPAS	3fluA	3fluA	0	1	(1-298)
+wMUSTER	1o5kA	1o5kA	0	1	(1-298)
+wPPAS	1o5kA	1o5kA	0	1	(1-298)
+dPPAS2	1o5kA	1o5kA	0	1	(2-298)
+dPPAS	3fluA	3fluA	0	1	(1-298)

@@ -1,0 +1,4 @@
+wPPAS	1yo4A	1yo4A	0	1	(17-112)
+dPPAS2	1z7kB	1z7kB	0	1	(16-82)
+wdPPAS	1yo4A	1yo4A	0	1	(17-112)
+dPPAS	1izkA3	1izkA	0	1	(1-100)

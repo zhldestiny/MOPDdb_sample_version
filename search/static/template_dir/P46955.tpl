@@ -1,0 +1,3 @@
+Env-PPAS	1mv3A	1mv3A	0	1	(176-281)
+Env-PPAS	2o6xA2	2o6xA	0	1	(73-336)
+Env-PPAS	2zfyA	2zfyA	1	1	(79-114|293-336)(115-292)

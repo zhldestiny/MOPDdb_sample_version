@@ -1,0 +1,8 @@
+dPPAS	1zrxA	1zrxA	0	1	(3-48)
+wPPAS	3hkzY	3hkzY	0	1	(1-51)
+Env-PPAS	1mogA	1mogA	0	1	(1-51)
+MUSTER	1wp9A	1wp9A	0	0	(1-3)(4-51)
+wdPPAS	3g9wD	3g9wD	0	1	(5-48)
+dPPAS2	1xp8A2	1xp8A	0	1	(1-20)
+wdPPAS	3gbgA2	3gbgA	0	1	(4-51)
+Env-PPAS	2vxaL	2vxaL	0	1	(1-51)

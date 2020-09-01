@@ -1,0 +1,2 @@
+Env-PPAS	3ggzD	3ggzD	0	1	(4-177)
+Env-PPAS	1konA	1konA	1	1	(13-77)(78-119|181-204)(120-180)

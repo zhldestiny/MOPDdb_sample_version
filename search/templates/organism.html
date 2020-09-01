@@ -1,0 +1,40 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} show {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+        #content_mark{
+        padding-left: 5px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #CD853F;
+        }
+        #content_box{font-size:18px; line-height:30px; margin:35px 10px 15px 10px; padding-left:10px;}
+        ol{padding-left:80px;}
+        ol li{list-style-type:decimal; padding:10px 0;}
+        ol li a{color:#06f;}
+        ol li a:hover{color:#f60; text-decoration: none;}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="content_mark">
+    Browse by organism
+    </div>
+    <div id="content_box">
+        <ol>
+            <li><a href={% url "organism" %}/homo_sapiens >homo sapiens</a></li>    {# homo_sapiens加下划线才能在url中识别完整，然后在views里处理一下 #}
+            <li><a href={% url "organism" %}/mus_musculus >mus musculus</a></li>
+            <li><a href={% url "organism" %}/escherichia_coli >escherichia coli</a></li>
+            <li><a href={% url "organism" %}/caenorhabditis_elegans >caenorhabditis elegans</a></li>
+            <li><a href={% url "organism" %}/saccharomyces_cerevisiae >saccharomyces cerevisiae</a></li>
+        </ol>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+    </script>
+{% endblock %}

@@ -1,0 +1,3 @@
+wdPPAS	1mv3A	1mv3A	0	1	(295-324)
+Env-PPAS	1ki1D	1ki1D	0	1	(9-196)(197-326)
+dPPAS	1mv3A	1mv3A	0	1	(279-320)

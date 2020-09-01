@@ -1,0 +1,4 @@
+wPPAS	1mv3A	1mv3A	0	1	(155-203)
+Env-PPAS	1z5hA4	1z5hA	0	1	(141-241)
+wdPPAS	1mv3A	1mv3A	0	1	(155-202)
+Env-PPAS	1ibjA3	1ibjA	0	1	(96-236)

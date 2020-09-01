@@ -1,0 +1,25 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} search result {% endblock %}
+{% block css %}
+{#    <link rel="stylesheet" href="{% static 'css/account.css' %}">#}
+    <style>
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if not_found %}
+    <h3>{{protein_name}} {{not_found}}</h3>
+    {% else %}
+        <h4>search result:</h4>
+    <div>
+        <a href="{% url 'home' %}{{ protein_name }}">{{ protein_name }}</a>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script>
+    </script>
+{% endblock %}

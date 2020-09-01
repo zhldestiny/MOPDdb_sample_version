@@ -1,0 +1,43 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block css %}
+{#    <link rel="stylesheet" href="{% static 'css/account.css' %}">#}
+    <style>
+        #content_box{margin:30px auto; padding-left:15px;}
+        #content_box pre{font-size:14px;}
+        #content_box pre a:hover{color:#f60;text-decoration: none;}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="content_mark">
+		Blastp Result
+		<hr />
+	</div>
+    <div id="content_box">
+    {% if blast_output %}
+     <pre id="blastOutput">{{ blast_output }}</pre>     {# <a href="{% url 'home' %}{{ protein_name }}">{{ protein_name }}</a> #}
+    {% else %}
+    <p>None</p>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+    /**
+    * @function unescapeHTML 还原html脚本 < > & " '
+    * @param a -
+    *            字符串
+    */
+   function unescapeHTML(a){
+       a = "" + a;
+       return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+   }
+   var pre = document.getElementById("blastOutput");
+   var oldContent = pre.innerHTML
+    pre.innerHTML = unescapeHTML(oldContent)
+    </script>
+{% endblock %}

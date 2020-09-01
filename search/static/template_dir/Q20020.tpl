@@ -1,0 +1,8 @@
+wPPAS	2ntkA	2ntkA	0	1	(1-208)
+Env-PPAS	1iokA1	1iokA	0	1	(9-135)(136-191)(192-208)
+wdPPAS	2ntkA	2ntkA	0	1	(1-208)
+wMUSTER	2olsA1	2olsA	0	0	(1-208)
+Env-PPAS	1vq2A	1vq2A	0	1	(5-195)
+wMUSTER	1ohyA2	1ohyA	1	0	(7-52|94-191)(53-94)
+wPPAS	2wtbA2	2wtbA	0	1	(5-207)
+PPAS	2olsA1	2olsA	0	1	(1-208)

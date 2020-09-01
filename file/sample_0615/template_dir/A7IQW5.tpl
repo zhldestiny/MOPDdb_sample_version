@@ -1,0 +1,8 @@
+MUSTER	3bzbB	3bzbB	0	1	(9-204)
+dPPAS	3bzbB	3bzbB	0	1	(9-204)
+wdPPAS	3bzbB	3bzbB	0	1	(9-204)
+wMUSTER	3bzbB	3bzbB	0	1	(9-204)
+wPPAS	3bzbB	3bzbB	0	1	(9-204)
+dPPAS2	3bzbB	3bzbB	0	1	(19-204)
+PPAS	3bzbB	3bzbB	0	1	(9-204)
+Env-PPAS	3bzbB	3bzbB	0	1	(9-204)

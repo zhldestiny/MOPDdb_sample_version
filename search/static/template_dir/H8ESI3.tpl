@@ -1,0 +1,6 @@
+wPPAS	1jcuA	1jcuA	0	1	(1-209)
+Env-PPAS	3cb2A2	3cb2A	0	1	(1-208)
+wMUSTER	2x0sA1	2x0sA	0	0	(2-118)(119-209)
+wdPPAS	1jcuA	1jcuA	0	1	(1-209)
+wPPAS	1x77A	1x77A	0	1	(1-199)
+wdPPAS	2qfjB	2qfjB	0	1	(35-154)(154-209)

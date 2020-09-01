@@ -1,0 +1,53 @@
+{% if not_found %}
+<h3>{{protein_name}} {{not_found}}</h3>
+{% else %}
+<div id="page-content-container" class="container">
+
+	<div class="row">
+
+        <div id="content" class="span12 small-headers">
+
+<div class="page-header">
+<h1>{{protein_name}}</h1>
+</div>
+
+<ul class="nav nav-tabs"><li class="active"><a title="Overview" href="{% url 'search_result' %}">Overview</a></li><li><a title="Annotations" href="">Annotations</a></li></ul>
+<h3 id="uniprot">UniProt Data</h3>
+<table class=""><thead></thead><tbody><tr><td class="first-column">Accession</td>		 
+	<td>{{protein_name}}		[
+		<a href='https://www.uniprot.org/uniprot/{{protein_name}}' target="_blank" alt="Visit the corresponding page on the UniProt website for this entry">UniProt <i class="icon-share"></i></a>
+		]
+	</td></tr>
+<tr><td class="first-column">Name</td>	 		 <td>{{protein_name}}</td></tr>
+<tr><td class="first-column">Description</td>	 <td>None</td></tr>
+<tr><td class="first-column">Species</td>		 <td><em>Home sapiens</em></td></tr>
+<tr><td class="first-column">Sequence Length</td><td>{{length}}</td></tr>
+</tbody>
+</table>
+
+<h3>GO Annotations</h3>
+	
+	<h4>Cellular component <small>(1)</small></h4>
+		None predicted	
+	<h4>Molecular function <small>(1)</small></h4>
+		None predicted	
+	<h4>Biological process <small>(1)</small></h4>
+		None predicted
+
+<h3>Protein Sequence</h3>
+
+<div class="code sequence"><pre class="sequence">&gt;{{protein_name}}
+MITQCPIQPGQRYAYRFNITGQEGTLWWHAHASFLRATVYGALVIRPKSGHSYPFPKPHKEVPILFGEWWNTDVVALEEA
+AIATGVPPNNSDAYTINGRPGNLYPCSKDRMFSLNVVKGKRYLLRIINAAMNIQLFFKIANHRLTVVAADAVYTAPYVTD
+VIVIAPGQTIDALLFADQSVDTSYYMAAHPYASAPAVPFPNTTTRGVIHYGGASKTGRSKPVLMPKLPSFFDTLTAYRFY
+SNLTALVNGPHWVPVPRYVDEEMLVTIGLGLEACADNTTCPKFSASMSNHSFVLPKKLSILEAVFHDVKGIFTADFPDQP
+PVKFDYTNPNVTQTNPGLLFTQKSTSAKILKFNTTVEVVLQNHALIAAESHPMHLHGFNFHVLAQGFGNYDPSRDRSKLN
+LVDPQSRNTLAVPVGGWAVIRFTANNPGAWIFHCHIDVHLPFGLGMIFVVKNGPTKSTTLPPPPPDLPKC</pre></div>
+			</div><!-- /#content -->
+
+	</div><!-- /#page -->
+
+</div>
+
+</div>  <!-- -->
+{% endif %}

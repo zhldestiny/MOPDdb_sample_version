@@ -1,0 +1,4 @@
+MUSTER	4hb1A	4hb1A	0	0	(3-47)
+wPPAS	2awbZ	2awbZ	0	1	(1-52)
+PPAS	1q3zA	1q3zA	0	1	(11-52)
+Env-PPAS	3cx5T	3cx5T	0	1	(1-52)

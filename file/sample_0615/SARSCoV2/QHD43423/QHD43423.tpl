@@ -1,0 +1,8 @@
+MUSTER	1sskA	1sskA	0	1	(47-179)
+dPPAS	1sskA	1sskA	0	1	(48-179)
+wdPPAS	1sskA	1sskA	0	1	(48-179)
+wMUSTER	1sskA	1sskA	0	1	(47-179)
+wPPAS	1sskA	1sskA	0	1	(48-179)
+dPPAS2	1sskA	1sskA	0	1	(48-179)
+PPAS	1sskA	1sskA	0	1	(47-179)
+Env-PPAS	1sskA	1sskA	0	1	(47-179)

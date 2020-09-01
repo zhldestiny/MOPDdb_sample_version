@@ -1,0 +1,5 @@
+Env-PPAS	1qqeA2	1qqeA	0	1	(1-54)
+Env-PPAS	1r0kB4	1r0kB	0	1	(1-57)
+MUSTER	1ysmA	1ysmA	0	0	(1-49)
+Env-PPAS	2di0A	2di0A	0	1	(3-40)
+PPAS	1ysmA	1ysmA	0	1	(1-51)

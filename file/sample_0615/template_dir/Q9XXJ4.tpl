@@ -1,0 +1,8 @@
+MUSTER	2kptA	2kptA	0	1	(29-189)
+dPPAS	2kptA	2kptA	0	1	(29-189)
+wdPPAS	2kptA	2kptA	0	1	(29-189)
+wMUSTER	2kptA	2kptA	0	1	(18-189)
+wPPAS	2kptA	2kptA	0	1	(18-189)
+dPPAS2	2kptA	2kptA	0	1	(29-189)
+PPAS	2kptA	2kptA	0	1	(18-189)
+Env-PPAS	2kptA	2kptA	0	1	(18-189)

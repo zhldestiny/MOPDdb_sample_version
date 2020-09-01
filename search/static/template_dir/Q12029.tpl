@@ -1,0 +1,3 @@
+wMUSTER	1qgkA	1qgkA	0	0	(1-326)
+Env-PPAS	1xxxA	1xxxA	0	1	(15-326)
+Env-PPAS	1u7lA	1u7lA	1	1	(1-33|286-326)(33-133|217-286)(133-216)

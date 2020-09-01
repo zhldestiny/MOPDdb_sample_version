@@ -1,0 +1,8 @@
+Env-PPAS	2vv5A1	2vv5A	0	1	(2-114)(128-201)(202-203)
+Env-PPAS	1akzA	1akzA	0	1	(3-203)
+wPPAS	2oqmA	2oqmA	0	1	(1-201)
+Env-PPAS	1jp4A1	1jp4A	0	1	(5-205)
+MUSTER	2hxoA	2hxoA	0	0	(1-54)(55-205)
+wMUSTER	2hxoA	2hxoA	0	0	(1-54)(55-205)
+Env-PPAS	1unbA1	1unbA	0	1	(1-204)
+Env-PPAS	2oqmA	2oqmA	0	1	(1-203)

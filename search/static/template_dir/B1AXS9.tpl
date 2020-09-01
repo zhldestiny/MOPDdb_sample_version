@@ -1,0 +1,7 @@
+Env-PPAS	1ordA4	1ordA	0	1	(49-112)
+wPPAS	1d4bA	1d4bA	0	1	(1-112)
+Env-PPAS	1zyrM2	1zyrM	0	1	(8-14)(15-110)
+wPPAS	1sskA	1sskA	0	1	(26-112)
+Env-PPAS	2qkpA	2qkpA	0	1	(1-112)
+wdPPAS	1d4bA	1d4bA	0	1	(1-112)
+PPAS	1d4bA	1d4bA	0	1	(1-112)

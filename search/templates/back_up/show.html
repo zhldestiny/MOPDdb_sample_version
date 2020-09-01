@@ -1,0 +1,35 @@
+{%extends 'back_up/base.html' %}
+
+{% block content %}
+<h1>{{protein_name}}</h1>
+
+<ul class="nav nav-tabs" >
+    <li><a title="Overview" href="{% url 'home' %}{{ protein_name }}">Overview</a></li>
+    <li><a title="Annotations" href="{% url 'home' %}{{ protein_name }}/annotations">Annotations</a></li>
+</ul>
+<h3 id="uniprot">UniProt Data</h3>
+<table class="table table-bordered">
+    <tr><td class="first-column">UniProt ID</td>        <td><a href='https://www.uniprot.org/uniprot/{{protein_name}}' target="_blank">{{protein_name}}</a></td></tr>
+    <tr><td class="first-column">Name</td>              <td>{{protein_name}}</td></tr>
+    <tr><td class="first-column">Description</td>       <td>None</td></tr>
+    <tr><td class="first-column">Organism</td>           <td><em>{{organism}}</em></td></tr>
+    <tr><td class="first-column">Sequence Length</td>   <td>{{length}}</td></tr>
+</table>
+
+<h3>GO Annotations</h3>
+
+	<h4>Cellular component <small>(1)</small></h4>
+		None predicted
+	<h4>Molecular function <small>(1)</small></h4>
+		None predicted
+	<h4>Biological process <small>(1)</small></h4>
+		None predicted
+
+<h3>Protein Sequence</h3>
+
+<div class="code sequence">
+    <pre class="sequence">&gt;{{protein_name}}
+{{ seq }}
+    </pre>
+</div>
+{% endblock %}

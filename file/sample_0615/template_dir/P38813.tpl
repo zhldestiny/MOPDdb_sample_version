@@ -1,0 +1,6 @@
+Env-PPAS	1h7gA	1h7gA	0	1	(72-334)
+Env-PPAS	3gh1A2	3gh1A	0	1	(3-123)(123-334)
+wdPPAS	1bwqA	1bwqA	0	1	(37-288)
+Env-PPAS	1l9yA	1l9yA	0	1	(47-334)
+Env-PPAS	3duvB	3duvB	0	1	(27-329)
+Env-PPAS	1r30B	1r30B	0	1	(1-333)

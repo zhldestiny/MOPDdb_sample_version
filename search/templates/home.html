@@ -1,0 +1,43 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} home {% endblock %}
+
+
+{% block css %}
+{#    <link rel="stylesheet" href="{% static 'css/account.css' %}">#}
+    <style>
+    </style>
+{% endblock %}
+
+<div class="container">
+{% block content %}
+    <!-- <h1>Introduction <h3>demo</h3> </h1> -->
+    <div class="card-body">
+        <h3 class="card-title">Model organism protein domain database</h3>
+        <p class="card-text">Introduction:a database collecting protein domain of
+            model organism which predicted with threadom
+        </p>
+        <p class="card-text">model organism: Homo sapiens, Mus musculus,
+            Saccharomyces cerevisiae, Escherichia coli, Arabidopsis thaliana,
+            Caenorhabditis elegans, Drosophila melanogaster
+        </p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        <br/>
+        <!--
+        <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'search_result' %}">
+            {% csrf_token %}
+        <input class="form-control mr-sm-2" name="protein_name" type="search" placeholder="input uniprot id here" aria-label="Search" style="width: 60rem;height: 4em">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="width: 6em ;height: 4em">Search</button>
+        </form>
+        -->
+        <img src="{% static 'img/protein_statistic.png' %}" alt="statistic">
+    </div>
+{% endblock %}
+</div>
+
+
+{% block js %}
+    <script>
+    </script>
+{% endblock %}

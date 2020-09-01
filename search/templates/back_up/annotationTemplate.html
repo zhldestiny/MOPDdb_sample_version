@@ -1,0 +1,238 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} show {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+        #domain_organization {height: 200px}
+        #structMap {height: 150px;}
+        #secStruct {position: relative;}
+        #secStructImg {position: absolute;}
+        #secStructAmino {position: absolute;}
+        #secStructSvg {display: none;}
+    </style>
+{% endblock %}
+
+{% block content %}
+<h1>{{protein_name}}</h1>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a title="Overview" href="{% url 'home' %}{{ protein_name }}">Overview</a></li>
+    <li><a title="Annotations" href="">Annotations</a></li>
+</ul>
+    <h4>Predicted Domains</h4>
+    <div id="plot_titile" style="position:relative;left:400px;top:10px;width:200px;height:50px">
+  {{ protein_name }} domain score
+    </div>
+<div id="chartContainer">
+</div>
+<div id="domain_organization">   <!-- style="position:relative;left:300px;height:400px" -->
+    domain cut: {{protein_name}}  {{length}} {{domain_num}} {{domain}}
+    <svg xmlns="http://www.w3.org/2000/svg" id="domSvg" width="1000" height="400" style='padding-left: 100px;'>
+    <!-- <rect x="120" y="20" width="294" rx="10" ry="20" height="10" style="fill:yellow;stroke:black;stroke-width:4;opacity:0.5" />
+    <rect x="414" y="20" width="192" rx="10" ry="20" height="10" style="fill:green;stroke:black;stroke-width:4;opacity:0.5" />
+    <rect x="606" y="20" width="351" rx="10" ry="20" height="10" style="fill:blue;stroke:black;stroke-width:4;opacity:0.5" /> -->
+  </svg>
+</div>
+<div id='structMap'>
+        Secondary structure
+        <div id="secStruct" ></div>    <!-- style='margin:auto,auto; position: absolute; width:300px; height:75px;' -->
+        <svg id="secStructSvg" ></svg>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static "js/d3.v4.min.js" %}"></script>
+    <script src="{% static "js/dimple.v2.3.0.min.js" %}"></script>
+    <script>
+        // plot score scatter map
+
+        var svg = dimple.newSvg("#chartContainer", 1000, 400);
+        d3.tsv("/static/tsv_dir/" + "{{ protein_name }}" + ".tsv", function (data) {
+          //data = dimple.filterData(data, "Owner", ["Aperture", "Black Mesa"])
+          var myChart = new dimple.chart(svg, data);
+          data.forEach(function(d) {
+            d.Ind = +d.Ind;
+            d.Score = +d.Score;
+          });
+          //myChart.setBounds(60, 30, 505, 305);
+          var x = myChart.addCategoryAxis("x", "Ind");
+          x.hidden = true;    // 隐藏x轴
+          //x.addOrderRule("Date");
+          var y = myChart.addMeasureAxis("y", "Score");
+          var s = myChart.addSeries(null, dimple.plot.line);
+          myChart.draw();
+        });
+        //x_axis
+        // svg.select("#dimple-axis dimple-axis-x")
+        //  .tickValues([100, 200, 400, 800]);
+        // add sep line
+        svg.select("line")
+          .attr("x1", 381)
+          .attr("y1", 201)
+          .attr("x2", 381)
+          .attr("y2", 300);
+
+        // plot rect
+        var colorArr = ['yellow', 'green', 'blue', 'pink', 'red'];
+        function splitDom(domStr){
+            // var widthArr = [];
+            // var xArr = [];
+            var splitArr = domStr.match(/\(.*?\)/g);    // ["(1-294)", "(295-487)", "(488-839)"]
+            // console.log(splitArr);
+            var tmpX1, tmpX2, tmpWidth;
+            for (var i = 0; i<splitArr.length; i++) {
+                if (splitArr[i].indexOf('|') == -1){
+                    tmpX2 = splitArr[i].match(/-\w+/)[0].slice(1,);
+                    tmpX2 = parseInt(tmpX2);
+                    tmpX1 = splitArr[i].match(/\w+-/)[0];
+                    tmpX1 = tmpX1.slice(0,tmpX1.length-1);
+                    tmpX1 = parseInt(tmpX1) - 1;
+                    tmpWidth = tmpX2 - tmpX1;
+                    createRect(tmpX1, tmpWidth, colorArr[i]);
+                } else {
+                    var tmpsplitArr = splitArr[i].split('|');    // ["(1-294", "488-600)"]
+                    for (var j = 0; j < tmpsplitArr.length; j++) {
+                        tmpX2 = tmpsplitArr[j].match(/-\w+/)[0].slice(1,);
+                        tmpX2 = parseInt(tmpX2);
+                        tmpX1 = tmpsplitArr[j].match(/\w+-/)[0];
+                        tmpX1 = tmpX1.slice(0,tmpX1.length-1);
+                        tmpX1 = parseInt(tmpX1) - 1;
+                        tmpWidth = tmpX2 - tmpX1;
+                        createRect(tmpX1, tmpWidth, colorArr[i]);
+                    }
+                }
+            }
+        }
+        function createRect(x, width, color) {
+            var domSvg = document.getElementById("domSvg");
+            var rect_element = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect_element.setAttribute("x", x);
+            rect_element.setAttribute("y", "20");
+            rect_element.setAttribute("width", width);
+            rect_element.setAttribute("rx", "10");
+            rect_element.setAttribute("ry", "20");
+            rect_element.setAttribute("height", "10");
+            rect_element.setAttribute("style", 'fill:'+color+';stroke:black;stroke-width:4;opacity:0.5');
+            domSvg.appendChild(rect_element);
+        }
+        // var domain = "(1-294)(295-487)(488-839)";    // '(1-294|488-600)(295-487)(601-839)'
+        var domain = '{{ domain }}';
+        // console.log(domain);
+        // var domain_num = {{ domain_num }};
+        var domain_length = {{ length }};
+        splitDom(domain);
+        svg1 = d3.select("#domain_organization").select("svg");
+        svg1.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0, 30)");
+          //.call(d3.svg.axis().scale([1, domain_length]).orient("bottom"));
+
+        // read secStruct file
+        function readSS(s){
+            d3.tsv(s, function (data) {
+            // console.log(data[0], data.length, typeof(+data[0].num));
+            for (var i = 0; i < data.length; i++) {
+                // numArr[i] = +data[i].num;
+                // aminoArr[i] = data[i].amino;
+                // secStructArr[i] = data[i].secStruct;
+                numArr.push(+data[i].num);
+                aminoArr.push(data[i].amino);
+                secStructArr.push(data[i].secStruct);
+            }
+            addSecStructMapTip();
+        });
+    }
+        //添加二级结构局部详细图
+        function addSecStructMapTip () {
+            var _padding = 10;
+            var _height = 130;
+            var _left = 20;    // raw 135
+            //if(i>=5)
+            for(var j = 0; j<numArr.length; j++){
+                //添加残基名
+                d3.select("#secStruct")
+                    .append("p")
+                    .attr("id","secStructAmino")
+                    .text(aminoArr[j])
+                    .style("left",((_padding+_left + (j)*15+3) + "px"))
+                    .style("top",((_padding + 20) +"px"));
+                //添加坐标线
+                d3.select("#secStructSvg")
+                    .append("line")
+                    .attr("id","secStructAxis")
+                    .attr("x1",(_padding+_left + (j)*15))
+                    .attr("y1",(_padding+40))
+                    .attr("x2",(_padding+_left + (j+1)*15))
+                    .attr("y2",(_padding+40))
+                    .attr("stroke","black")
+                    .attr("stroke-width",1);
+                if(j%5==0)
+                {
+                    d3.select("#secStructSvg")
+                        .append("line")
+                        .attr("id","secStructAxis")
+                        .attr("x1",(_padding+_left + (j)*15 + 7))
+                        .attr("y1",(_padding+40))
+                        .attr("x2",(_padding+_left + (j)*15 + 7))
+                        .attr("y2",(_padding+45))
+                        .attr("stroke","black")
+                        .attr("stroke-width",2);
+                    d3.select("#secStruct")
+                        .append("p")
+                        .style("left",((_padding+_left + (j)*15) + "px"))
+                        .style("top",((_padding+50) + "px"))
+                        .style("position","absolute")
+                        .text(j+1);
+                }
+
+                if(secStructArr[j] == "H")
+                {
+                    d3.select("#secStruct")
+                        .append("img")
+                        .attr("id","secStructImg")
+                        .attr("src","{% static 'img/Helix.png' %}")
+                        .style("left",((_padding+_left + (j)*15) + "px"))
+                        .style("top",((_padding) + "px"));
+                }
+                else if(secStructArr[j] == "E")
+                {
+                    if(j == secStructArr.length-1 ||secStructArr[j+1] != "E")
+                    {
+                        d3.select("#secStruct")
+                            .append("img")
+                            .attr("id","secStructImg")
+                            .attr("src","{% static 'img/Strand1.png' %}")
+                            .style("left",((_padding+_left + (j)*15) + "px"))
+                            .style("top",((_padding) + "px"));
+                    }
+                    else
+                    {
+                        d3.select("#secStruct")
+                            .append("img")
+                            .attr("id","secStructImg")
+                            .attr("src","{% static 'img/Strand2.png' %}")
+                            .style("left",((_padding+_left + (j)*15) + "px"))
+                            .style("top",((_padding) + "px"));
+                    }
+                }
+                else //if(dataset[(i*40 + j)].secStruct == "C")
+                {
+                    d3.select("#secStruct")
+                        .append("img")
+                        .attr("id","secStructImg")
+                        .attr("src","{% static 'img/Coil.png' %}")
+                        .style("left",((_padding+_left + (j)*15) + "px"))
+                        .style("top",((_padding) + "px"));
+                }
+            }
+        }
+        // 全局变量
+        var aminoArr = [];
+        var numArr = [];
+        var secStructArr = [];
+        readSS("/static/seqsstsv_dir/" + "{{ protein_name }}" + ".ss.tsv");
+    </script>
+{% endblock %}

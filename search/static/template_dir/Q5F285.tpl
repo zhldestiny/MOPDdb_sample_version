@@ -1,0 +1,4 @@
+dPPAS2	2x2vA	2x2vA	0	1	(8-76)
+Env-PPAS	2h8aA	2h8aA	0	1	(1-112)
+dPPAS	2x2vA	2x2vA	0	1	(8-76)
+PPAS	2vpyC2	2vpyC	0	1	(3-112)

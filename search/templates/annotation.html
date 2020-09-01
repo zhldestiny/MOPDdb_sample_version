@@ -1,0 +1,1147 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} show {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+        #domain_organization {height: 150px}
+        #structMap {height: 200px; overflow: auto;}
+        #secStruct {position: relative;}
+        #secStructImg {position: absolute;}
+        #secStructAmino {position: absolute;}
+        #secStructSvg {display: none;}
+        {#valuemap style#}
+        #dataValueDiv{
+            position:relative;
+        }
+        .hidden1{
+            display:none;
+            position: absolute;
+            /*
+            left:-1000px;
+            top:-1000px;*/
+        }
+        /* tooltip样式使得value值可以随着两条轴线移动 */
+        #tooltip {
+            position: absolute;
+            left: -1000px;
+            top: -1000px;
+        }
+        #tooltip, #tooltipStruct, #tooltipExp{
+            position:absolute;
+            width:auto;
+            height:auto;
+            padding:0px 5px 0px 5px;
+            background-color:rgba(164,190,212,0.5);
+
+            -webkit-box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+            -moz-box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+            box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+
+            pointer-events:none;
+        }
+        #tooltip p{
+            margin:0;
+            font-size:11px;
+            line-height:20px;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: black;
+            shape-rendering: auto;
+        }
+        .axis text {
+            font-family:"Microsoft YaHei";
+            font-size: 11px;
+        }
+
+        /* tpl show */
+        #alignmentDomain{
+            position: relative;
+            height: 2100px;
+        }
+        #seqContent{
+            top:0;
+            left:0;
+            height: 38px;
+            width: 802px;
+            position: relative;
+            float: left;
+            border-color: rgb(248,248,248);
+            border-width: 1px;
+            border-style: solid;
+        }
+        #seqAlign{
+            position: relative;
+            background-color: rgb(248,248,248);
+        }
+
+        #ul1{
+            width: 1099px;
+            position: absolute;
+            top:40px;
+        }
+
+        #ul0{
+            width: 1099px;
+            position: absolute;
+            top:0;
+            padding-top: 0;
+            height: 40px;
+        }
+
+        /*#ul0, #ul1{
+            padding-left: 5px;
+            left: -141px;
+        }*/
+        #ul1 li,#ul0 li{
+            width: 1094px;
+            height: 40px;
+            position: relative;
+            list-style-type: none;
+            text-align:center;
+            font-size: 16px;
+        }
+
+        ul{
+            list-style-type:none;
+        }
+
+        .li_num{
+            width:50px;
+            height: 38px;
+            position: relative;
+            float: left;
+            border-color: rgb(248,248,248);
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .li_num_p,.li_name_p, .li_PDB_p, .li_fold_btn{
+            margin-top:7px;
+        }
+
+        .li_name{
+            width:110px;
+            height: 38px;
+            position: relative;
+            float: left;
+            border-color: rgb(248,248,248);
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .li_PDB{
+            width:80px;
+            height: 38px;
+            position: relative;
+            float: left;
+            border-color: rgb(248,248,248);
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        /* domain show */
+        .seqTarget{
+            position: relative;
+        }
+        .targetSvg{
+	        width: 950px;
+	        margin: 0;
+	        padding: 0;
+        }
+        #tSvg1{
+            height:100px;
+            position: relative;
+        }
+        #tipTarget{
+            width: 300px;
+            position: absolute;
+            background-color: rgb(239,239,239);
+            border-width:3px;
+            border-color:rgb(7,73,135);
+            border-style: solid ;
+
+            -webkit-border-radius:5px;
+            -moz-border-radius:5px;
+            border-radius:5px;
+
+            -webkit-box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+            -moz-box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+            box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+            z-index: 999;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>{{protein_name}}</h1>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a title="Overview" href="{% url 'home' %}{{ protein_name }}">Overview</a></li>
+        <li><a title="Annotations" href="">Annotations</a></li>
+    </ul>
+    <h3>Predicted Domains</h3>
+    <div id="plot_titile" style="position:relative;left:400px;top:10px;width:200px;height:50px">
+        <p style="width:250px;">{{ protein_name }} domain score</p>
+    </div>
+    <div id='dataValueDiv'>
+        <svg id='dataValue'>
+            <line id="xline" class=''></line>
+            <line id="yline" class=''></line>
+            <circle id="scircle" class=''></circle>
+        </svg>
+        <div id="tooltip" >
+            <p><span id='value'></span></p>
+        </div>
+    </div>
+    <div id="domain_organization">
+        <h3>domain cut</h3>
+        {{protein_name}}  {{length}} {{domain_num}} {{domain}}
+        <svg xmlns="http://www.w3.org/2000/svg" id="domSvg" width="1000" height="400" style='padding-left: 100px;'></svg>
+        <!-- <div id="tipTarget">
+            <div id="tipTargetTop"></div>
+            <div id="tipTargetContent"></div>
+        </div> -->
+    </div>
+    <!--<div class='seqTarget'>
+        <div class='targetName' id="tName1"></div>
+        <div class='targetDiv'></div>
+        <div class='targetSvg' id="tSvg1"></div>
+        <div id="tipTarget">
+            <div id="tipTargetTop"></div>
+            <div id="tipTargetContent"></div>
+        </div>
+    </div> -->
+
+    <div id='structMap'>
+        <h3>Secondary structure</h3>
+        <br/>
+            <div id="secStruct" ></div>    <!-- style='margin:auto,auto; position: absolute; width:300px; height:75px;' -->
+            <svg id="secStructSvg" ></svg>
+    </div>
+
+<div id='alignmentDomain'>
+    <h3>Template list</h3>
+    <br/>
+    <div id="seqAlign">
+        <ul id="ul0"></ul>
+        <ul id="ul1"></ul>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+{#    <script src="{% static "js/d3.v4.min.js" %}"></script>#}
+    <script src="{% static "js/d3.v3.min.js" %}"></script>
+    <script src="{% static "js/dimple.v2.3.0.min.js" %}"></script>
+{#    <script type="text/javascript" src="{% static 'js/annotation.js' %}"></script>#}
+    <script>
+        function readScore(scoreFile) {
+            d3.tsv(scoreFile, function(error, data) {
+                if (error) throw error;
+
+                for (var i = 0; i < data.length; i++) {
+                    // numArr[i] = +data[i].num;
+                    // aminoArr[i] = data[i].amino;
+                    // secStructArr[i] = data[i].secStruct;
+                    numset.push(data[i].Ind);
+                    valueset.push(+data[i].Score);
+                }
+
+                addValueMap();
+            });
+        }
+
+        function addValueMap(){
+            //归一化处理
+            var normalize = d3.scale.linear()
+                                .domain([d3.min(valueset,function(d){
+                                                    return d;
+                                        }),d3.max(valueset,function(d){
+                                                    return d;
+                                        })])
+                                .range([0,1]);
+            for(var i = 0; i < numset.length; i++) {
+                valueset[i] = parseFloat((normalize(valueset[i])).toFixed(5));
+            }
+            // dataset
+            for(var i=0;i<numset.length;i++) {
+                    dataset.push({
+                    key:numset[i],
+                    value:parseFloat(valueset[i]),
+                    // secStruct:secStructset[i],
+                    // amino:aminoset[i],
+                    // exp:expset[i]
+                });
+            }
+
+            xScale = d3.scale.linear()
+                        .domain([0,numset.length])
+                        .range([105,905]);
+            yScale = d3.scale.linear()
+                        .domain([d3.min(valueset,function(d){
+                                    return d;
+                                }),d3.max(valueset,function(d){
+                                    return d;
+                                })])
+                        .range([h-padding,padding]);
+
+            /* yExpScale = d3.scale.linear()
+                                .domain([0,1])
+                                .range([h-padding,padding]); */
+            // add ValueMap
+            var p = "";
+            for(var i=0;i<numset.length;i++) {
+                p += xScale(numset[i]);
+                p += ",";
+                p += yScale(valueset[i]);
+                if(i<numset.length-1) {
+                    p+=" ";
+                }
+            }
+            //console.log(p);
+            //折线图区域
+            var svg = d3.select("#dataValue")
+                        .attr("width",w)
+                        .attr("height",h);
+            svg.on("mouseover", function(){
+                xpos = d3.mouse(svg.node())[0];
+                ypos = d3.mouse(svg.node())[1];
+            });
+            //添加折线
+            svg.append("polyline")
+                .attr("points",p)
+                .attr("fill","none")
+                .attr("stroke","rgba(66,133,244,0.5)")
+                .attr("stroke-width",2);
+
+            //Define X axis
+            var xAxis = d3.svg.axis()
+                            .scale(xScale)
+                            .ticks(5)//最多刻度数，连上原点
+                            .orient("bottom");
+                            //.tickFormat();//添加刻度格式
+            //Define Y axis
+            var yAxis = d3.svg.axis()
+                            .scale(yScale)
+                            .orient("left")
+                            .ticks(5);
+                            //.tickFormat();
+            //Create X axis
+
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(0," + (h - padding) + ")")//设置据下边界的距离
+                .call(xAxis);
+
+            //Create Y axis
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(105, 0)")//设置轴据左边界的距离
+                .call(yAxis);
+
+            svg.selectAll(".srect")
+                .data(dataset,function(d){
+                    return d.key;
+                })
+                .enter()
+                .append("rect")
+                .attr("id",function(d,i){
+                    var theId = "scoreRect" + i;
+                    return theId;
+                })
+                .attr("class", "srect")
+                .attr("x",function(d,i){
+                    return xScale(i+1)-x_len/dataset.length/2;
+                })
+                .attr("y",function(d){
+                    return padding;
+                })
+                .attr("height",function(d){
+                    return h-padding*2;
+                    //return (w-padding*2)/dataset.length;
+                })
+                .attr("width",function(d){
+                    return x_len/dataset.length;
+                })
+                .attr("fill","rgba(255,0,0,0)")
+                .on("mouseover",function(d,i){
+                    var tempValue = d.value;
+                    var tempIndex = d.key;
+                    var tempExp = null;    // 亲疏水，暂时设为null
+
+                    var xPosition = xScale(tempIndex);
+                    var yPosition = yScale(tempValue);
+                    //console.log(tempValue);
+                    //console.log(yPosition);
+
+                    drawInteraction(tempValue,tempExp,tempIndex,xPosition,yPosition);
+                })
+                .on("mouseout",function(d,i){
+                    /* d3.select("#tooltipExp")
+                        .style("left", "-1000px")
+                        .style("top", "-1000px");
+                    d3.select("#sCircleExp").classed("hidden1",true);
+                    d3.select("#xlineExp").classed("hidden1", true);
+                    d3.select("#ylineExp").classed("hidden1", true); */
+                    d3.select("#tooltip")
+                        .style("left", "-1000px")
+                        .style("top", "-1000px");
+                    d3.select("#scircle").classed("hidden1", true);
+                    d3.select("#xline").classed("hidden1", true);
+                    d3.select("#yline").classed("hidden1", true);
+                    var tempId = "#rect" + (d.key-1);
+                    d3.select(tempId)
+                        .transition()
+                        .duration(100)
+                        .attr("fill","rgba(255,0,0,0)");
+                    });
+        }
+
+        function drawInteraction(tempValue, tempExp, tempIndex, xPosition, yPosition){
+            // var _yPosition = yExpScale(tempExp);
+            //alert(yPosition);
+            //添加提示框
+            var temp = tempIndex+", "+tempValue;
+            d3.select("#tooltip")
+                .style("left",(xPosition+"px"))
+                .style("top",(yPosition+"px"))
+                .transition()
+                .duration(speed)
+                .select("#value")
+                .text(temp);
+
+            //添加提示圈
+            d3.select("#scircle")
+                    .classed("hidden1", false)
+                    .attr("cx",xPosition)
+                    .attr("cy",yPosition)
+                    .attr("r",3)
+                    .transition()
+                    .duration(speed)
+                    .attr("fill","black");
+
+            //添加坐标线
+            d3.select("#xline")
+                    .classed("hidden1", false)
+                    .attr("x1", 105)
+                    .attr("y1", yPosition)
+                    .attr("x2", 905)
+                    .attr("y2", yPosition)
+                    .transition()
+                    .duration(speed)
+                    .attr("stroke", "rgba(255,0,0,0.3)");
+            d3.select("#yline")
+                    .classed("hidden1", false)
+                    .attr("x1", xPosition)
+                    .attr("y1", padding)
+                    .attr("x2", xPosition)
+                    .attr("y2", h-padding)
+                    .transition()
+                    .duration(speed)
+                    .attr("stroke", "rgba(255,0,0,0.3)");
+
+            //////
+            /* temp = tempIndex+", "+tempExp;
+
+            d3.select("#tooltipExp")
+                .style("left",(xPosition+"px"))
+                .style("top",(_yPosition+"px"))
+                .transition()
+                .duration(speed)
+                .select("#valueExp")
+                .text(temp);
+
+            d3.select("#tooltipExp")
+                .classed("hidden1",false)
+                .transition()
+                .duration(speed)
+                .style("left",(xPosition+"px"))
+                .style("top",(_yPosition+"px"))
+                .select("#exp")
+                .text(temp);
+
+            //添加提示圈
+            d3.select("#sCircleExp")
+                    .classed("hidden1", false)
+                    .attr("cx",xPosition)
+                    .attr("cy",_yPosition)
+                    .attr("r",3)
+                    .transition()
+                    .duration(speed)
+                    .attr("fill","black");
+            //添加坐标线
+            d3.select("#xlineExp")
+                    .classed("hidden1", false)
+                    .attr("x1", 105)
+                    .attr("y1", _yPosition)
+                    .attr("x2", 905)
+                    .attr("y2", _yPosition)
+                    .transition()
+                    .duration(speed)
+                    .attr("stroke", "rgba(255,0,0,0.3)");
+            d3.select("#ylineExp")
+                    .classed("hidden1", false)
+                    .attr("x1", xPosition)
+                    .attr("y1", padding)
+                    .attr("x2", xPosition)
+                    .attr("y2", h-padding)
+                    .transition()
+                    .duration(speed)
+                    .attr("stroke", "rgba(255,0,0,0.3)");
+            //二级结构图的分割线
+            var tempId = "#rect" + (tempIndex-1);
+            d3.select(tempId)
+                .transition()
+                .duration(100)
+                .attr("fill","rgba(255,0,0,0.3)"); */
+            }
+
+
+        // 全局变量
+        var w=930;
+        var h=250;
+        var x_len = 800;
+        var padding = 26;
+        var speed = 50;
+        //比例尺
+        var xScale;                 //将下标映射到x轴上
+        var yScale;                 //将score值映射到y轴上
+        var numset = [];
+        var valueset = [];
+        var dataset = [];
+
+        readScore("/static/tsv_dir/" + "{{ protein_name }}" + ".tsv");
+
+
+        // read secStruct file
+        function readSS(s){
+            d3.tsv(s, function (data) {
+            // console.log(data[0], data.length, typeof(+data[0].num));
+            for (var i = 0; i < data.length; i++) {
+                // numArr[i] = +data[i].num;
+                // aminoArr[i] = data[i].amino;
+                // secStructArr[i] = data[i].secStruct;
+                numArr.push(+data[i].num);   // 非全局变量 作用域仅在d3.tsv这个函数内 尽管声明的是全局变量 坑
+                aminoArr.push(data[i].amino);    // 非全局变量 作用域仅在d3.tsv这个函数内 尽管声明的是全局变量 坑
+                secStructArr.push(data[i].secStruct);    // 非全局变量 作用域仅在d3.tsv这个函数内 尽管声明的是全局变量 坑
+            }
+            addSecStructMapTip();
+            var domain = '{{ domain }}';
+            // console.log(domain);
+            var domain_length = {{ length }};
+            var aminoset = aminoArr;
+            splitDom(domain, domain_length, aminoset);
+            svg1 = d3.select("#domain_organization").select("svg");
+            svg1.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0, 30)");
+                });
+        }
+        //添加二级结构局部详细图
+        function addSecStructMapTip () {
+            var _padding = 10;
+            var _height = 130;
+            var _left = 20;    // raw 135
+            //if(i>=5)
+            for(var j = 0; j<numArr.length; j++){
+                //添加残基名
+                d3.select("#secStruct")
+                    .append("p")
+                    .attr("id","secStructAmino")
+                    .text(aminoArr[j])
+                    .style("left",((_padding+_left + (j)*15+3) + "px"))
+                    .style("top",((_padding + 20) +"px"));
+                //添加坐标线
+                d3.select("#secStructSvg")
+                    .append("line")
+                    .attr("id","secStructAxis")
+                    .attr("x1",(_padding+_left + (j)*15))
+                    .attr("y1",(_padding+40))
+                    .attr("x2",(_padding+_left + (j+1)*15))
+                    .attr("y2",(_padding+40))
+                    .attr("stroke","black")
+                    .attr("stroke-width",1);
+                if(j%5==0)
+                {
+                    d3.select("#secStructSvg")
+                        .append("line")
+                        .attr("id","secStructAxis")
+                        .attr("x1",(_padding+_left + (j)*15 + 7))
+                        .attr("y1",(_padding+40))
+                        .attr("x2",(_padding+_left + (j)*15 + 7))
+                        .attr("y2",(_padding+45))
+                        .attr("stroke","black")
+                        .attr("stroke-width",2);
+                    d3.select("#secStruct")
+                        .append("p")
+                        .style("left",((_padding+_left + (j)*15) + "px"))
+                        .style("top",((_padding+50) + "px"))
+                        .style("position","absolute")
+                        .text(j+1);
+                }
+
+                if(secStructArr[j] == "H")
+                {
+                    d3.select("#secStruct")
+                        .append("img")
+                        .attr("id","secStructImg")
+                        .attr("src","{% static 'img/Helix.png' %}")
+                        .style("left",((_padding+_left + (j)*15) + "px"))
+                        .style("top",((_padding) + "px"));
+                }
+                else if(secStructArr[j] == "E")
+                {
+                    if(j == secStructArr.length-1 ||secStructArr[j+1] != "E")
+                    {
+                        d3.select("#secStruct")
+                            .append("img")
+                            .attr("id","secStructImg")
+                            .attr("src","{% static 'img/Strand1.png' %}")
+                            .style("left",((_padding+_left + (j)*15) + "px"))
+                            .style("top",((_padding) + "px"));
+                    }
+                    else
+                    {
+                        d3.select("#secStruct")
+                            .append("img")
+                            .attr("id","secStructImg")
+                            .attr("src","{% static 'img/Strand2.png' %}")
+                            .style("left",((_padding+_left + (j)*15) + "px"))
+                            .style("top",((_padding) + "px"));
+                    }
+                }
+                else //if(dataset[(i*40 + j)].secStruct == "C")
+                {
+                    d3.select("#secStruct")
+                        .append("img")
+                        .attr("id","secStructImg")
+                        .attr("src","{% static 'img/Coil.png' %}")
+                        .style("left",((_padding+_left + (j)*15) + "px"))
+                        .style("top",((_padding) + "px"));
+                }
+            }
+        }
+        // 全局变量
+        var aminoArr = [];
+        var numArr = [];
+        var secStructArr = [];
+        readSS("/static/seqsstsv_dir/" + "{{ protein_name }}" + ".ss.tsv");
+
+
+        // plot rect
+        var colorArr = ['yellow', 'green', 'blue', 'pink', 'red'];
+        function splitDom(domStr, domain_length, aminoset){
+            // var widthArr = [];
+            // var xArr = [];
+            var splitArr = domStr.match(/\(.*?\)/g);    // ["(1-294)", "(295-487)", "(488-839)"]
+            // console.log(splitArr);
+            var tmpX1, tmpX2, tmpWidth;
+            for (var i = 0; i<splitArr.length; i++) {
+                if (splitArr[i].indexOf('|') == -1){
+                    tmpX2 = splitArr[i].match(/-\w+/)[0].slice(1,);
+                    tmpX2 = parseInt(tmpX2);
+                    tmpX1 = splitArr[i].match(/\w+-/)[0];
+                    tmpX1 = tmpX1.slice(0,tmpX1.length-1);
+                    tmpX1 = parseInt(tmpX1);
+                    // tmpWidth = 800*(tmpX2 - tmpX1)/domain_length;
+                    tmpWidth = tmpX2-tmpX1;
+                    createRect(tmpX1, tmpWidth, colorArr[i], 'rect_'+i, {'x1': tmpX1, 'x2': tmpX2}, i, domain_length, aminoset);
+                } else {
+                    var tmpsplitArr = splitArr[i].split('|');    // ["(1-294", "488-600)"]
+                    for (var j = 0; j < tmpsplitArr.length; j++) {
+                        tmpX2 = tmpsplitArr[j].match(/-\w+/)[0].slice(1,);
+                        tmpX2 = parseInt(tmpX2);
+                        tmpX1 = tmpsplitArr[j].match(/\w+-/)[0];
+                        tmpX1 = tmpX1.slice(0,tmpX1.length-1);
+                        tmpX1 = parseInt(tmpX1);
+                        // tmpWidth = 800*(tmpX2 - tmpX1)/domain_length;
+                        tmpWidth = tmpX2-tmpX1;
+                        createRect(tmpX1, tmpWidth, colorArr[i], 'rect_'+i+j, {'x1': tmpX1, 'x2': tmpX2}, i+'_'+j, domain_length, aminoset);
+                    }
+                }
+            }
+        }
+
+        function createRect(x, width, color, rectId, domainSeg, seg_num, domain_length, aminoset) {
+            var domSvg = document.getElementById("domSvg");
+            var rect_element = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect_element.setAttribute("id", rectId);
+            rect_element.setAttribute("x", x);
+            rect_element.setAttribute("y", "20");
+            rect_element.setAttribute("width", width);
+            rect_element.setAttribute("rx", "0");
+            rect_element.setAttribute("ry", "0");
+            rect_element.setAttribute("height", "10");
+            rect_element.setAttribute("style", 'fill:'+color+';stroke:black;stroke-width:1;opacity:0.5');
+            domSvg.appendChild(rect_element);
+            /*var _pad = 105;
+            d3.select('#'+rectId)
+                .style("cursor","pointer")
+                .style("z-index", "99")
+                .on("mouseover", function(){
+                    d3.select("#tipTarget")
+                        .classed("hidden1", false)
+                        .style("left", function(){
+                            var left_distance = x_len/domain_length*(domainSeg.x1 - 1) + _pad;
+                            if(left_distance > 680){
+                                return "680px"
+                            }else{
+                                return left_distance + "px";
+                            }
+                        })
+                        .style("top", "55px")
+                        .style("width", "300px");
+                        d3.select("#tipTargetTop")
+                            .append("p")
+                            .text(function(){
+                                return ">domain segment "+seg_num+" ("+domainSeg.x1+"-"+domainSeg.x2+")";
+                            });
+                        d3.select("#tipTargetContent")
+                            .append("p")
+                            .text(function(){
+                                var set_arr = aminoset.slice(domainSeg.x1-1, domainSeg.x2);
+                                return set_arr.join("");
+                            });
+                    })
+                    .on("mouseout", function(){
+                        d3.select("#tipTarget")
+                            .classed("hidden1",true);
+                        d3.select("#tipTargetContent")
+                            .text("");
+                        d3.select("#tipTargetTop")
+                            .text("");
+                    });*/
+        }
+        // var domain = "(1-294)(295-487)(488-839)";    // '(1-294|488-600)(295-487)(601-839)'
+        /* var domain = '{{ domain }}';
+        // console.log(domain);
+        var domain_length = {{ length }};
+        var aminoset = aminoArr;
+        console.log(aminoset);
+        splitDom(domain);
+        svg1 = d3.select("#domain_organization").select("svg");
+        svg1.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0, 30)"); */
+          //.call(d3.svg.axis().scale([1, domain_length]).orient("bottom"));
+
+        // tpl show
+        // 获取文件
+        function getFile(s){
+            var xmlHttp;
+            try {
+            // Firefox, Opera 8.0+, Safari
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                // Internet Explorer
+                try {
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+
+                    try {
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Your browser does not support AJAX！");
+                        return false;
+                    }
+                }
+            }
+
+            xmlHttp.open("GET", s, false);
+            xmlHttp.send(null);
+            xmlDoc=xmlHttp.responseText;
+            // console.log(xmlDoc);
+            return xmlDoc;
+        }
+
+        // 读取tpl文件
+        function readTpl(s){
+            if(s[s.length-1] == "\n"){
+                s = s.substring(0,s.length-1);
+            }
+            var tplList = s.split("\n");
+            var each_tpl;
+            for (var i=0; i<tplList.length; i++){
+                each_tpl = tplList[i].split("\t");
+                var each_domain = each_tpl[each_tpl.length-1];
+                each_domain = each_domain.substring(1, each_domain.length-1);
+                var each_list = each_domain.split(")(");
+                each_list = each_list.sort(function(a,b){return a.split("-")[0] - b.split("-")[0];});
+                each_domain = "(" + each_list.join(")(") + ")";
+                templateData.push({
+                "m": each_tpl[0],
+                "n": each_tpl[1],
+                "t": each_domain
+                });
+            }
+            //console.log(templateData[0].m);
+        }
+
+        // 画tpl列表
+        function drawBars(){
+            var li = d3.select("#ul0")
+                        .append("li")
+                        .style("z-index",10);
+            li.append("div")
+                .attr("class","li_num")
+                .style("background-color","rgb(7,73,135)")
+                .append("div")
+                .attr("class","li_num_p")
+                .append("p")
+                .style("color","white")
+                .text("No.");
+            li.append("div")
+                .attr("class","li_name")
+                .style("background-color","rgb(7,73,135)")
+                .append("div")
+                .attr("class","li_name_p")
+                .append("p")
+                .style("color","white")
+                .text("Threading");
+            li.append("div")
+                .attr("class","li_PDB")
+                .style("background-color","rgb(7,73,135)")
+                .append("div")
+                .attr("class","li_PDB_p")
+                .append("p")
+                .style("color","white")
+                .text("PDB-ID");
+
+
+            li.append("div")
+                .attr("id","seqContent")
+                .style("background-color","rgb(7,73,135)")
+                .append("div")
+                .attr("class","li_seqContent_p")
+                .append("p")
+                .style("margin-top","7px")
+                .style("color","white")
+                .text("Sequence");
+
+            for(var j = 0;j < templateData.length;j++){
+                var liID = "li_" + j;
+                //var _liID = "_" + liID;
+                var li = d3.select("#ul1")
+                            .append("li")
+                            .attr("id",liID);
+                li.append("div")
+                    .attr("class","li_num")
+                    .style("background-color",function(){ //行背景颜色
+                        if(j%2 == 0)
+                        {
+                            return "rgb(220,220,220)";
+                        }
+                        else
+                        {
+                            return "rgb(255,255,255)";
+                        }
+                    })
+                    .append("div")
+                    .attr("class","li_num_p")
+                    .append("p")
+                    .text(j + 1);
+                li.append("div")
+                    .attr("class","li_name")
+                    .style("background-color",function(){
+                        if(j%2 == 0)
+                        {
+                            return "rgb(220,220,220)";
+                        }
+                        else
+                        {
+                            return "rgb(255,255,255)";
+                        }
+                    })
+                    .append("div")
+                    .attr("class","li_name_p")
+                    .append("p")
+                    .text(templateData[j]['m']);
+                li.append("div")
+                    .attr("class","li_PDB")
+                    .style("background-color",function(){
+                        if(j%2 == 0)
+                        {
+                            return "rgb(220,220,220)";
+                        }
+                        else
+                        {
+                            return "rgb(255,255,255)";
+                        }
+                    })
+                    .append("div")
+                    .attr("class","li_PDB_p")
+                    .append("a")
+                    .attr("href", "http://www.rcsb.org/pdb/explore/explore.do?structureId="+templateData[j]['n'].substr(0,4))
+                    .attr("target", "_blank")
+                    .text(templateData[j]['n']);
+
+
+                var seqContent = li.append("div")
+                                    .attr("id","seqContent")
+                                    .style("background-color",function(){
+                                        if(j%2 == 0)
+                                        {
+                                            return "rgb(220,220,220)";
+                                        }
+                                        else
+                                        {
+                                            return "rgb(255,255,255)";
+                                        }
+                                    })
+                                    .text(templateData[j]['t']);
+            }
+        }
+
+        var templateData = [];
+        readTpl(getFile("/static/template_dir/" + "{{ protein_name }}" + ".tpl"));
+        drawBars();
+
+        // seqTarget
+        //目标结构域
+        {#function drawTarget(){#}
+        {#    //alert(segmentation[0]);#}
+        {#    d3.selectAll(".targetSvg")#}
+        {#            .text("");#}
+        {#    d3.selectAll(".targetName")#}
+        {#            .text("");#}
+        {#    d3.selectAll(".targetDiv")#}
+        {#            .text("");#}
+        {#    var _xScale = d3.scale.linear()#}
+        {#                    .domain([0,len])#}
+        {#                    .range([0,x_len]);#}
+        {#    //console.log(len);#}
+        {#    var _xAxis = d3.svg.axis()#}
+        {#                    .scale(_xScale)#}
+        {#                    .ticks(5)//最多刻度数，连上原点#}
+        {#                    .orient("bottom");#}
+        {#                    //.tickFormat();//添加刻度格式#}
+        {#    //Create X axis#}
+        {#    d3.selectAll(".targetSvg")#}
+        {#        .append("g")#}
+        {#        .attr("id","xAxis")#}
+        {#        .attr("class", "axis")#}
+        {#        .attr("transform", "translate(105,55)")//设置距下边界的距离#}
+        {#        .call(_xAxis);#}
+        {##}
+        {#    d3.select("#tName1")#}
+        {#        .style("left","55px")#}
+        {#        .style("top","35px")#}
+        {#        .style("position","absolute")#}
+        {#        .style("width", "50px")#}
+        {#        .style("z-index", "999")#}
+        {#        .text("Target:")#}
+        {#        .style("cursor", "pointer")#}
+        {#        .on("mouseover", function(){#}
+        {#            d3.select("#tipTarget")#}
+        {#                .classed("hidden1", false)#}
+        {#                .style("left","55px")#}
+        {#                .style("top", "55px")#}
+        {#                .style("width", "600px");#}
+        {#            d3.select("#tipTargetTop")#}
+        {#                .append("p")#}
+        {#                .text(function(){#}
+        {#                    return ">" + protein_name;#}
+        {#                });#}
+        {#            d3.select("#tipTargetContent")#}
+        {#                .append("p")#}
+        {#                .text(function(){#}
+        {#                    return aminoset.join("");#}
+        {#                });#}
+        {#        })#}
+        {#        .on("mouseout", function(){#}
+        {#            d3.select("#tipTarget")#}
+        {#                .classed("hidden1",true);#}
+        {#            d3.select("#tipTargetContent")#}
+        {#                .text("");#}
+        {#            d3.select("#tipTargetTop")#}
+        {#                .text("");#}
+        {#        });#}
+        {#// alert(finalSegmentation.length);#}
+        {#    var _pad = 105;#}
+        {#    for(var i = 0;i <= finalSegmentation.length;i ++)#}
+        {#    {#}
+        {#        var tempId = "seg0_";#}
+        {#        tempId += (i+1);#}
+        {##}
+        {#        if(i == finalSegmentation.length)#}
+        {#        {#}
+        {#            if(i == 0)#}
+        {#            {#}
+        {#                d3.selectAll(".targetDiv")#}
+        {#                    .append("div")#}
+        {#                    .attr("id",tempId)#}
+        {#                    .style("left",(_pad + "px"))#}
+        {#                    .style("top","40px")#}
+        {#                    .style("width",function(){#}
+        {#                            return x_len+"px";#}
+        {#                    })#}
+        {#                    .style("height","10px")#}
+        {#                    .style("position","absolute")#}
+        {#                    .style("background-image",function(){#}
+        {#                        return '/static/img/ds_'+ (i+1) + '.png'; {# return "url(img/ds_" + (i+1) + ".png)"; return "{% static 'img/Coil.png' %}"; #}
+        {#                    });#}
+        {#            }#}
+        {#            else#}
+        {#            {#}
+        {#                d3.selectAll(".targetDiv")#}
+        {#                    .append("div")#}
+        {#                    .attr("id",tempId)#}
+        {#                    .style("left",function(){#}
+        {#                        return (x_len/len*finalSegmentation[i-1] + _pad) + "px";#}
+        {#                    })#}
+        {#                    .style("top","40px")#}
+        {#                    .style("width",function(){#}
+        {#                            return ((len - finalSegmentation[i-1]) * x_len/len) + "px";#}
+        {#                    })#}
+        {#                    .style("height","10px")#}
+        {#                    .style("position","absolute")#}
+        {#                    .style("background-image",function(){#}
+        {#                        return "url(/static/img/ds_" + (i+1) + ".png";#}
+        {#                        //return '/static/img/ds_'+ (i+1) + '.png)'; // return "url(img/ds_" + (i+1) + ".png)";#}
+        {#                    });#}
+        {#            }#}
+        {#            break;#}
+        {#        }#}
+        {#        // alert(tempId);#}
+        {#        d3.selectAll(".targetDiv")#}
+        {#            .append("div")#}
+        {#            .attr("id",tempId)#}
+        {#            .style("left",function(){#}
+        {#                if(i == 0)#}
+        {#                    return _pad + "px";#}
+        {#                else#}
+        {#                    return (x_len/len*finalSegmentation[i-1] + _pad) + "px";#}
+        {#            })#}
+        {#            .style("top","40px")#}
+        {#            .style("width",function(){#}
+        {#                if(i > 0)#}
+        {#                    return (x_len/len*(finalSegmentation[i]-finalSegmentation[i-1])) + "px";#}
+        {#                else#}
+        {#                    return (x_len/len*finalSegmentation[i]) + "px";#}
+        {#            })#}
+        {#            .style("height","10px")#}
+        {#            .style("position","absolute")#}
+        {#            .style("background-image",function(){#}
+        {#                return '/static/img/ds_'+ (i+1) + '.png)';    //return "url(img/ds_" + (i+1) + ".png)";#}
+        {#            });#}
+        {#    }#}
+        {#    for(var i=0; i<domains.length; i++){#}
+        {#        var targetx1 = domains[i].x1;#}
+        {#        var targetx2 = domains[i].x2;#}
+        {#        var targetrectid = "targetrectid_" + i;#}
+        {#        var targetrectid2 = "targetrectid2_" + i;#}
+        {#        d3.select("#tSvg1").append("rect")#}
+        {#            .attr("id", targetrectid)#}
+        {#            .attr("x", function(){#}
+        {#                return (x_len/len*(targetx1 - 1) + _pad) + "px";#}
+        {#            })#}
+        {#            .attr("y", 35)#}
+        {#            .attr("width", function(){#}
+        {#                return (x_len/len*(targetx2 - targetx1 + 1)) + "px";#}
+        {#            })#}
+        {#            .attr("height", 20)#}
+        {#            .attr("fill","rgba(255,0,0,0)")#}
+        {#            .style("cursor","pointer")#}
+        {#            .style("z-index", "99")#}
+        {#            .on("mouseover", function(){#}
+        {#                d3.select(this)#}
+        {#                    .transition()#}
+        {#                    .duration(100)#}
+        {#                    .attr("fill", "rgba(255,0,0,0.3)");#}
+        {#                var id_index = d3.select(this).attr("id").split("_")[1];#}
+        {#                var seg_num = parseInt(id_index) + 1;#}
+        {#                d3.select("#tipTarget")#}
+        {#                    .classed("hidden1", false)#}
+        {#                    .style("left", function(){#}
+        {#                        var left_distance = x_len/len*(domains[id_index].x1 - 1) + _pad;#}
+        {#                        if(left_distance > 680){#}
+        {#                            return "680px"#}
+        {#                        }else{#}
+        {#                            return left_distance + "px";#}
+        {#                        }#}
+        {#                    })#}
+        {#                    .style("top", "55px")#}
+        {#                    .style("width", "300px");#}
+        {#                d3.select("#tipTargetTop")#}
+        {#                    .append("p")#}
+        {#                    .text(function(){#}
+        {#                        return ">domain segment "+seg_num+" ("+domains[id_index].x1+"-"+domains[id_index].x2+")";#}
+        {#                    });#}
+        {#                d3.select("#tipTargetContent")#}
+        {#                    .append("p")#}
+        {#                    .text(function(){#}
+        {#                        var set_arr = aminoset.slice(domains[id_index].x1-1, domains[id_index].x2);#}
+        {#                        return set_arr.join("");#}
+        {#                    });#}
+        {#            })#}
+        {#            .on("mouseout", function(){#}
+        {#                d3.select(this)#}
+        {#                    .transition()#}
+        {#                    .duration(100)#}
+        {#                    .attr("fill", "rgba(255,0,0,0)");#}
+        {#                d3.select("#tipTarget")#}
+        {#                    .classed("hidden1",true);#}
+        {#                d3.select("#tipTargetContent")#}
+        {#                    .text("");#}
+        {#                d3.select("#tipTargetTop")#}
+        {#                    .text("");#}
+        {#            });#}
+        {#    }#}
+        {#}#}
+        // 分割domain
+        /* function splitDom(domStr){
+            // var widthArr = [];
+            // var xArr = [];
+            var splitArr = domStr.match(/\(.*?\)/g);    // ["(1-294)", "(295-487)", "(488-839)"]
+            // console.log(splitArr);
+            var tmpX1, tmpX2, tmpWidth;
+            for (var i = 0; i<splitArr.length; i++) {
+                if (splitArr[i].indexOf('|') == -1){
+                    tmpX2 = splitArr[i].match(/-\w+/)[0].slice(1,);
+                    tmpX2 = parseInt(tmpX2);
+                    tmpX1 = splitArr[i].match(/\w+-/)[0];
+                    tmpX1 = tmpX1.slice(0,tmpX1.length-1);
+                    tmpX1 = parseInt(tmpX1);
+                    finalSegmentation.push(tmpX2);
+                    domains.push({'x1': tmpX1, 'x2': tmpX2});
+                    // tmpWidth = tmpX2 - tmpX1;
+                    // createRect(tmpX1, tmpWidth, colorArr[i]);
+                } else {
+                    var tmpsplitArr = splitArr[i].split('|');    // ["(1-294", "488-600)"]
+                    for (var j = 0; j < tmpsplitArr.length; j++) {
+                        tmpX2 = tmpsplitArr[j].match(/-\w+/)[0].slice(1,);
+                        tmpX2 = parseInt(tmpX2);
+                        tmpX1 = tmpsplitArr[j].match(/\w+-/)[0];
+                        tmpX1 = tmpX1.slice(0,tmpX1.length-1);
+                        tmpX1 = parseInt(tmpX1);
+                        finalSegmentation.push(tmpX2);
+                        domains.push({'x1': tmpX1, 'x2': tmpX2});
+                        // tmpWidth = tmpX2 - tmpX1;
+                        // createRect(tmpX1, tmpWidth, colorArr[i]);
+                    }
+                }
+            }
+        }
+        var len = parseInt({{ length }});
+        var protein_name = '{{ protein_name }}';
+        {#var aminoStr = {{ seq }};#}
+        var aminoset = aminoArr;
+        var finalSegmentation = [];
+        var domains = [];
+        splitDom('{{ domain }}');
+        finalSegmentation.sort(function(a, b){ return a-b });
+        finalSegmentation.pop(); */
+        // console.log(domains, finalSegmentation);
+        // drawTarget();
+
+
+    </script>
+{% endblock %}

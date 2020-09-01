@@ -1,0 +1,7 @@
+wdPPAS	3gzfA	3gzfA	0	1	(402-497)
+wPPAS	3gzfA	3gzfA	0	1	(402-497)
+dPPAS2	3gzfA	3gzfA	0	1	(402-497)
+PPAS	3gzfA	3gzfA	0	1	(402-497)
+Env-PPAS	3gzfA	3gzfA	0	1	(402-497)
+dPPAS	3gzfA	3gzfA	0	1	(402-497)
+Env-PPAS	3cvrA	3cvrA	0	1	(1-247)(248-353)(354-447)(448-499)

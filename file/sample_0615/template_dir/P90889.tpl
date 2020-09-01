@@ -1,0 +1,2 @@
+Env-PPAS	1bg6A2	1bg6A	0	1	(1-187)
+wdPPAS	2x0cA2	2x0cA	0	1	(1-94)(95-197)

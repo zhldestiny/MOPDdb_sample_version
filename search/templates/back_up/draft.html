@@ -1,0 +1,26 @@
+{%extends 'back_up/base.html' %}
+
+{% block content %}
+    <!-- <h1>Protein name: {{protein_name}}</h1>
+    <h1>Length: {{length}}</h1>
+    <h1>Domain num: {{domain_num}}</h1>
+    <h1>domain: {{domain}}</h1> -->
+    {% if not_found %}
+    <h3>{{protein_name}} {{not_found}}</h3>
+    {% else %}
+    <!-- <h3>Uniprot id: {{protein_name}}  Length: {{length}}  Domain num: {{domain_num}}
+         domain: {{domain}}
+    </h3> -->
+    <div class="card" style="width: 70rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">Uniprot id: {{protein_name}}</h5>
+          <p class="card-text">description:none</p>
+          <p class="card-text">length: {{length}}</p>
+          <p class="card-text">domain num: {{domain_num}}</p>
+          <p class="card-text">domain: {{domain}}</p>
+          <a href='https://www.uniprot.org/uniprot/{{protein_name}}' class="btn btn-primary" style="background-color: #8dbef0;">uniprot ref</a>
+        </div>
+      </div>
+    {% endif %}
+{% endblock %}

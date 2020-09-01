@@ -1,0 +1,6 @@
+Env-PPAS	3bitA2	3bitA	0	1	(8-212)(213-302)
+wPPAS	1izcA	1izcA	0	1	(1-290)
+dPPAS2	1u9pA	1u9pA	0	1	(144-242)
+Env-PPAS	1kp0A2	1kp0A	0	1	(19-207)(208-302)
+wMUSTER	1izcA	1izcA	0	0	(1-302)
+Env-PPAS	2wqtT	2wqtT	0	1	(1-298)

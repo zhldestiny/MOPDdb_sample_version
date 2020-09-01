@@ -1,0 +1,6 @@
+wPPAS	1weuA	1weuA	0	1	(11-112)
+wPPAS	2b5yA	2b5yA	0	1	(1-112)
+wPPAS	2k7mA	2k7mA	0	1	(9-106)
+dPPAS2	2ju4A	2ju4A	0	1	(1-78)
+wMUSTER	1qn0A	1qn0A	0	0	(1-112)
+wPPAS	1zh6A2	1zh6A	0	1	(1-112)

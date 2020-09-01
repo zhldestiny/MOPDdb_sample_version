@@ -1,0 +1,3 @@
+dPPAS2	3a2aA	3a2aA	0	1	(62-103)
+dPPAS2	1debA	1debA	0	1	(53-107)
+wdPPAS	2oa5B	2oa5B	0	1	(10-111)

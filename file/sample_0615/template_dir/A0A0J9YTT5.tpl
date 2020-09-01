@@ -1,0 +1,5 @@
+wdPPAS	2jmvA	2jmvA	0	1	(1-54)(55-105)
+wdPPAS	1hn6A	1hn6A	0	1	(4-112)
+wPPAS	1pyiA	1pyiA	0	1	(7-52)
+dPPAS2	1q0vA	1q0vA	0	1	(30-103)
+Env-PPAS	1cfzA	1cfzA	0	1	(1-112)

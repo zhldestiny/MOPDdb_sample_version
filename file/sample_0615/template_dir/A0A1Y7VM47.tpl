@@ -1,0 +1,5 @@
+wdPPAS	2ddkA2	2ddkA	0	1	(1-112)
+wdPPAS	1jp4A2	1jp4A	0	1	(1-112)
+dPPAS2	1zotA2	1zotA	0	1	(30-71)(72-86)
+Env-PPAS	2cyeC	2cyeC	0	1	(4-112)
+wPPAS	1ireB1	1ireB	0	1	(1-112)

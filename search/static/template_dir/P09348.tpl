@@ -1,0 +1,2 @@
+MUSTER	1b3uA	1b3uA	0	0	(1-294)
+Env-PPAS	1hl2A	1hl2A	0	1	(1-294)

@@ -1,0 +1,12 @@
+{% extends "back_up/base.html" %}
+
+{% block content %}
+<h1>{{protein_name}}</h1>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a title="Overview" href="{% url 'home' %}{{ protein_name }}">Overview</a></li>
+    <li><a title="Annotations" href="">Annotations</a></li>
+</ul>
+    <h4>Predicted Domains</h4>
+
+{% endblock %}

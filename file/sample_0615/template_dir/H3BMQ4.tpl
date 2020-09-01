@@ -1,0 +1,8 @@
+dPPAS	1p9cA	1p9cA	0	1	(24-42)
+Env-PPAS	1eixC3	1eixC	0	1	(1-51)
+dPPAS	1mpzA	1mpzA	0	1	(12-51)
+PPAS	1mpzA	1mpzA	0	1	(1-51)
+MUSTER	1p9cA	1p9cA	0	0	(23-41)
+dPPAS2	1p9cA	1p9cA	0	1	(24-42)
+MUSTER	1ogbB2	1ogbB	0	0	(1-51)
+dPPAS	1uelB	1uelB	0	1	(4-51)
